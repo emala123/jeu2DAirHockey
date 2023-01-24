@@ -41,7 +41,7 @@ def commonConfig = {
 
 def localConfig = {
    configure commonConfig
-   main = "mon_projet.MonProjetLocal"
+   main = "air_hockey.AirHockeyLocal"
    jvmArgs('-Dsun.java2d.opengl=true')
 }
 
