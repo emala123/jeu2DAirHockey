@@ -1,5 +1,6 @@
 package air_hockey;
 
+import air_hockey.frontal.FrontalAirHockey;
 import ca.ntro.app.NtroClientFx;
 import ca.ntro.app.backend.BackendRegistrar;
 import ca.ntro.app.frontend.FrontendRegistrarFx;
@@ -23,7 +24,7 @@ public class AirHockeyLocal implements NtroClientFx{
 	@Override
 	public void registerFrontend(FrontendRegistrarFx registrar) {
 		// TODO Auto-generated method stub
-		
+		registrar.registerFrontend(new FrontalAirHockey());
 	}
 
 	@Override
