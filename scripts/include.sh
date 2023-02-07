@@ -43,7 +43,8 @@ home_dir="$HOME"
     #home_dir="$HOME"
 #fi
 
-project_cache_dir="$home_dir/.gradle_3c6"
+#project_cache_dir="$home_dir/.gradle_4f5"
+project_cache_dir=".gradle"
 gradle_args=--project-cache-dir='"'$project_cache_dir'"'" --continue "
 
 save_dir(){
