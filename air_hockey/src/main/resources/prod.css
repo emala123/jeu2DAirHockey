@@ -1,0 +1,11 @@
+.conteneur {
+    -fx-border-width:10;
+}
+
+#vue-racine {
+    -fx-border-color:darkred;
+}
+
+#vue-historique {
+    -fx-border-color:darkblue;
+}

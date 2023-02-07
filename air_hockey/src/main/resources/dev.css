@@ -1,0 +1,92 @@
+.conteneur {
+    -fx-border-width:10;
+    -fx-alignment:center;
+}
+
+#vue-racine {
+    -fx-border-color:#4682B4;
+}
+
+#vue-historique {
+-fx-background-color:#87CEEB;
+    -fx-border-color:#4169E1;	
+	
+}
+
+
+.gros-bouton {
+
+-fx-font-size: 1.2em;
+    -fx-background-color: 
+        #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+.gros-bouton:pressed {
+    -fx-font-size: 1.5em;
+}
+
+.gros-bouton:hover {
+    -fx-cursor: hand;
+}
+
+.petit-v {
+
+    -fx-min-height:20px;
+    -fx-max-height:100px;
+
+
+}
+
+.titre{
+   -fx-font-size: 25px; 
+}
+
+.add-bouton{
+-fx-background-color: 
+        #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+.del-bouton{
+-fx-background-color: 
+        #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+.add-bouton:pressed {
+    -fx-font-size: 1.5em;
+}
+
+.add-bouton:hover {
+    -fx-cursor: hand;
+}
+
+.del-bouton:pressed {
+    -fx-font-size: 1.5em;
+}
+
+.del-bouton:hover {
+    -fx-cursor: hand;
+}

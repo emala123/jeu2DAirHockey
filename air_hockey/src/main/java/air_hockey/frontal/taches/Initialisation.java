@@ -1,7 +1,12 @@
 package air_hockey.frontal.taches;
 
 import ca.ntro.app.tasks.frontend.FrontendTasks;
+import air_hockey.frontal.vues.VueHistorique;
+import air_hockey.frontal.vues.VueRacine;
+
 import static ca.ntro.app.tasks.frontend.FrontendTasks.*;
+
+import ca.ntro.app.frontend.ViewLoader;
 import ca.ntro.app.services.Window;
 
 public class Initialisation {
@@ -10,11 +15,21 @@ public class Initialisation {
 
 		tasks.taskGroup("Initialisation")
 
-				.contains(subTasks -> {
-
+				.andContains(subTasks ->{
+					
+					creerVueRacine(subTasks);
+					
+					installerVueRacine(subTasks);
+					
+					creerVueHistorique(subTasks);
+					
+					installerVueHistorique(subTasks);
+					
+					
 					afficherFenetre(subTasks);
-
+					
 				});
+		
 	}
 
 	private static void afficherFenetre(FrontendTasks subTasks) {
@@ -30,5 +45,72 @@ public class Initialisation {
 					window.show();
 				});
 	}
+	
+    private static void creerVueRacine(FrontendTasks tasks) {
 
+        tasks.task(create(VueRacine.class))
+
+             .waitsFor(viewLoader(VueRacine.class))
+
+             .thenExecutesAndReturnsValue(inputs -> {
+
+                 ViewLoader<VueRacine> viewLoader = inputs.get(viewLoader(VueRacine.class));
+
+                 VueRacine vueRacine = viewLoader.createView();
+
+                 return vueRacine;
+             });
+    }
+
+    private static void installerVueRacine(FrontendTasks tasks) {
+
+        tasks.task("installerVueRacine")
+
+              .waitsFor(window())
+
+              .waitsFor(created(VueRacine.class))
+
+              .thenExecutes(inputs -> {
+
+                  VueRacine vueRacine = inputs.get(created(VueRacine.class));
+                  Window    window    = inputs.get(window());
+
+                  window.installRootView(vueRacine);
+              });
+    }
+
+    private static void creerVueHistorique(FrontendTasks tasks) {
+
+        tasks.task(create(VueHistorique.class))
+
+             .waitsFor(viewLoader(VueHistorique.class))
+
+             .thenExecutesAndReturnsValue(inputs -> {
+
+                 ViewLoader<VueHistorique> viewLoader = inputs.get(viewLoader(VueHistorique.class));
+
+                 VueHistorique vueHistorique = viewLoader.createView();
+
+                 return vueHistorique;
+             });
+    }
+
+    private static void installerVueHistorique(FrontendTasks tasks) {
+
+        tasks.task("installerVueHistorique")
+
+              .waitsFor(created(VueRacine.class))
+
+              .waitsFor(created(VueHistorique.class))
+
+              .thenExecutes(inputs -> {
+
+                  VueRacine      vueRacine      = inputs.get(created(VueRacine.class));
+                  VueHistorique vueHistorique = inputs.get(created(VueHistorique.class));
+
+                  vueRacine.afficherSousVue(vueHistorique);
+
+              });
+    }
+    
 }
