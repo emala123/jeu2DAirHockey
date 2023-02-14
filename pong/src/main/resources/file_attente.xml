@@ -16,11 +16,12 @@
         </image>
     </ImageView>
 
-     <Button 
-        text="%joindrePartie"
-        styleClass="gros-bouton"
-        id="bouton-ouvrir-partie">
-    </Button>
+    <Button 
+    fx:id="boutonJoindrePartie" 
+    text="%joindrePartie"
+    styleClass="gros-bouton"
+    id="bouton-ouvrir-partie">
+</Button>
 
 <Label text="%lesRendezVous" styleClass="moyen-texte"/>
 
@@ -30,5 +31,6 @@
     id="label-message"
     text="[labelRendezVous]">
 </Label>
+
 
 </VBox>

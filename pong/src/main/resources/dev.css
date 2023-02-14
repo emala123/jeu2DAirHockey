@@ -35,3 +35,7 @@
 .gros-bouton:hover {
     -fx-cursor: hand;
 }
+
+#vue-partie {
+    -fx-border-color:darkgreen;
+}

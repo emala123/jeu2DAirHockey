@@ -6,13 +6,19 @@ import java.util.List;
 import ca.ntro.app.models.Model;
 import ca.ntro.app.models.Watch;
 import ca.ntro.app.models.WriteObjectGraph;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import pong.commun.modeles.valeurs.RendezVous;
+import pong.frontal.vues.VueFileAttente;
 
 public class ModeleFileAttente implements Model, Watch, WriteObjectGraph {
 
     private long prochainIdRendezVous = 1;
 
     private List<RendezVous> lesRendezVous = new ArrayList<>();
+    
+    @FXML
+    private Label labelRendezVous;
     
     public long getProchainIdRendezVous() {
         return prochainIdRendezVous;
@@ -34,4 +40,28 @@ public class ModeleFileAttente implements Model, Watch, WriteObjectGraph {
 		this.lesRendezVous = lesRendezVous;
 	}
     
+	 public void afficherSur(VueFileAttente vueFileAttente) {
+
+	        vueFileAttente.afficherRendezVousEnTexte(this.toString());
+	    }
+	
+	 @Override
+	    public String toString() {
+
+	        StringBuilder builder = new StringBuilder();
+	        int numeroRendezVous = 1;
+
+	        for(RendezVous rendezVous : lesRendezVous) {
+
+	            builder.append(numeroRendezVous);
+	            builder.append(". ");
+	            builder.append(rendezVous.toString());
+	            builder.append("\n");
+
+	            numeroRendezVous++;
+	        }
+
+	        return builder.toString();
+	    }
+	 
 }
