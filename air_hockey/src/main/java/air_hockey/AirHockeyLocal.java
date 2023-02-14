@@ -1,5 +1,7 @@
 package air_hockey;
 
+import air_hockey.commun.modeles.ModeleHistorique;
+import air_hockey.commun.modeles.valeurs.Usager;
 import air_hockey.frontal.FrontalAirHockey;
 import ca.ntro.app.NtroClientFx;
 import ca.ntro.app.backend.BackendRegistrar;
@@ -36,7 +38,8 @@ public class AirHockeyLocal implements NtroClientFx{
 	@Override
 	public void registerModels(ModelRegistrar registrar) {
 		// TODO Auto-generated method stub
-		
+		registrar.registerModel(ModeleHistorique.class);
+		registrar.registerValue(Usager.class);
 	}
 
 }

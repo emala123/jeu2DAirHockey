@@ -32,6 +32,18 @@
         </image>
     </ImageView>
 
+
+<Pane styleClass="petit-v"/>
+
+<Label text="%lesParties" styleClass="moyen-texte"/>
+
+<Label 
+    fx:id="labelParties"
+    styleClass="petit-texte"
+    id="label-message"
+    text="[labelParties]">
+</Label>
+
      <Pane styleClass="petit-v"/>
 
      <Button 

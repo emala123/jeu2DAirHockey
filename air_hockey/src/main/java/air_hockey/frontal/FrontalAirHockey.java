@@ -7,6 +7,7 @@ import ca.ntro.app.frontend.events.EventRegistrar;
 import ca.ntro.app.tasks.frontend.FrontendTasks;
 import air_hockey.frontal.vues.VueHistorique;
 import air_hockey.frontal.vues.VueRacine;
+import air_hockey.frontal.taches.AfficherHistorique;
 import air_hockey.frontal.taches.Initialisation;
 
 public class FrontalAirHockey implements FrontendFx {
@@ -15,7 +16,7 @@ public class FrontalAirHockey implements FrontendFx {
     public void createTasks(FrontendTasks tasks) {
 
         Initialisation.creerTaches(tasks);
-
+        AfficherHistorique.creerTaches(tasks);
     }
 
     @Override
