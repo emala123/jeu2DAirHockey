@@ -38,7 +38,7 @@ public class AfficherHistorique {
 	                 ModeleHistorique ancienHistorique = historique.previousValue();
 	                 ModeleHistorique historiqueCourant = historique.currentValue();
 
-	             
+	                 historiqueCourant.afficherSur(vueHistorique);
 
 	             });
 	    }
