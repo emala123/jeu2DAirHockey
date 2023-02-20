@@ -23,6 +23,13 @@
     id="bouton-ouvrir-partie">
 </Button>
 
+<Button 
+    fx:id="boutonSInscrire" 
+    text="%sInscrire"
+    styleClass="gros-bouton"
+    id="bouton-s-inscrire">
+</Button>
+
 <Label text="%lesRendezVous" styleClass="moyen-texte"/>
 
 <Label 

@@ -10,6 +10,12 @@ public class RendezVous implements ModelValue {
 	 public RendezVous(){
 	    }
 
+	public RendezVous(String idRendezVous, Usager premierJoueur) {
+		// TODO Auto-generated constructor stub
+		setIdRendezVous(idRendezVous);
+		setPremierJoueur(premierJoueur);
+	}
+
 	public String getIdRendezVous() {
 		return idRendezVous;
 	}

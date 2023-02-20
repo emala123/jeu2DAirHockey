@@ -10,9 +10,11 @@ import ca.ntro.core.initialization.Ntro;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import pong.commun.messages.MsgAjouterRendezVous;
 import pong.commun.modeles.ModeleFileAttente;
 import pong.commun.modeles.valeurs.RendezVous;
 import pong.evenements.EvtAfficherPartie;
+import pong.maquettes.MaquetteUsagers;
 
 public class VueFileAttente extends ViewFx {
 
@@ -22,12 +24,37 @@ public class VueFileAttente extends ViewFx {
 	@FXML
 	private Button boutonJoindrePartie;
 
+	@FXML
+    private Button boutonSInscrire;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Ntro.assertNotNull("labelRendezVous", labelRendezVous);
 		Ntro.assertNotNull("boutonJoindrePartie", boutonJoindrePartie);
+		Ntro.assertNotNull("boutonSInscrire", boutonSInscrire);
 		installerEvtAfficherPartie();
+		installerMsgAjouterRendezVous();
+
+
 	}
+	
+
+
+    private void installerMsgAjouterRendezVous() {
+
+        MsgAjouterRendezVous msgAjouterRendezVous = NtroApp.newMessage(MsgAjouterRendezVous.class);
+
+        boutonSInscrire.setOnAction(evtFx -> {
+
+            // l'usager courant s'inscrit
+            msgAjouterRendezVous.setPremierJoueur(MaquetteUsagers.usagerCourant());
+            msgAjouterRendezVous.send();
+
+            // à chaque clic, on passe à un nouvel usager
+            MaquetteUsagers.prochainUsager();
+
+        });
+    }
 
 	private void installerEvtAfficherPartie() {
 

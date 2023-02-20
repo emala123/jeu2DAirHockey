@@ -12,7 +12,7 @@ import ca.ntro.app.models.WriteObjectGraph;
 
 public class ModeleHistorique implements Model, Watch, WriteObjectGraph{
 	
-	private List<Historique> historique = new ArrayList<>();
+	private List<Historique> lesParties = new ArrayList<>();
 
 	
 	public ModeleHistorique() {
@@ -33,6 +33,22 @@ public class ModeleHistorique implements Model, Watch, WriteObjectGraph{
 
 
 
+	public List<Historique> getLesParties() {
+		return lesParties;
+	}
+
+
+
+
+
+	public void setLesParties(List<Historique> lesParties) {
+		this.lesParties = lesParties;
+	}
+
+
+
+
+
 
 	
 	@Override
@@ -41,7 +57,7 @@ public class ModeleHistorique implements Model, Watch, WriteObjectGraph{
 	        StringBuilder builder = new StringBuilder();
 	        int numeroPartie = 1;
 
-	        for(Historique historique : historique) {
+	        for(Historique historique : lesParties) {
 
 	            builder.append(numeroPartie);
 	            builder.append(". ");
@@ -53,22 +69,6 @@ public class ModeleHistorique implements Model, Watch, WriteObjectGraph{
 
 	        return builder.toString();
 	    }
-
-
-
-
-
-	public List<Historique> getHistorique() {
-		return historique;
-	}
-
-
-
-
-
-	public void setHistorique(List<Historique> historique) {
-		this.historique = historique;
-	}
 
 	
 }

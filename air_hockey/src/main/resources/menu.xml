@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+    fx:controller="air_hockey.frontal.vues.VueMenu" 
+    styleClass="conteneur"
+    id="vue-menu">
+
+<Button 
+    fx:id="boutonHistorique" 
+    text="%boutonHistorique"
+    styleClass="gros-bouton"
+    id="boutonHistorique">
+</Button>
+
+</VBox>

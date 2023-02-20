@@ -9,6 +9,7 @@ import ca.ntro.app.models.WriteObjectGraph;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import pong.commun.modeles.valeurs.RendezVous;
+import pong.commun.modeles.valeurs.Usager;
 import pong.frontal.vues.VueFileAttente;
 
 public class ModeleFileAttente implements Model, Watch, WriteObjectGraph {
@@ -63,5 +64,23 @@ public class ModeleFileAttente implements Model, Watch, WriteObjectGraph {
 
 	        return builder.toString();
 	    }
+	 
+	 public void ajouterRendezVous(Usager premierJoueur) {
+
+	        String idRendezVous = genererIdRendezVous();
+
+	        RendezVous rendezVous = new RendezVous(idRendezVous, premierJoueur);
+
+	        lesRendezVous.add(rendezVous);
+	    }
+
+	    private String genererIdRendezVous() {
+	        String idRendezVous = String.valueOf(prochainIdRendezVous);
+	        prochainIdRendezVous++;
+
+	        return idRendezVous;
+	    }
+	 
+	 
 	 
 }

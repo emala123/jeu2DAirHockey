@@ -11,6 +11,12 @@ public class Usager implements ModelValue {
 	
 	public Usager(){
     }
+	
+	public Usager(String id, String prenom, String nom) {
+        setId(id);
+        setPrenom(prenom);
+        setNom(nom);
+    }
 
 	public String getId() {
 		return id;

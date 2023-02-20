@@ -4,8 +4,13 @@ import ca.ntro.app.models.ModelValue;
 
 public class Historique implements ModelValue {
 
+
 	private Usager Joueur1;
 	private Usager Joueur2;
+
+	public Historique() {
+		super();
+	}
 
 	public Usager getJoueur2() {
 		return Joueur2;
@@ -25,7 +30,9 @@ public class Historique implements ModelValue {
 
 	@Override
 	public String toString() {
-		return Joueur1.getPrenom() +"Vs" +Joueur2.getPrenom();
+		return Joueur1.nomComplet() +" Vs " +Joueur2.nomComplet();
 		
 	}
+
+
 }
