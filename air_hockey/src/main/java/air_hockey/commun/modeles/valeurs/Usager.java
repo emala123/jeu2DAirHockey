@@ -13,6 +13,13 @@ public class Usager implements ModelValue{
 		
 	}
 
+	public Usager(String id, String prenom, String nom, int pointage) {
+        setId(id);
+        setPrenom(prenom);
+        setNom(nom);
+        setPointage(pointage);
+    }
+	
 	public String getId() {
 		return id;
 	}

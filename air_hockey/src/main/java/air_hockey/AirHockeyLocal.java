@@ -1,8 +1,10 @@
 package air_hockey;
 
+import air_hockey.commun.messages.MsgAjouterPartie;
 import air_hockey.commun.modeles.ModeleHistorique;
 import air_hockey.commun.modeles.valeurs.Historique;
 import air_hockey.commun.modeles.valeurs.Usager;
+import air_hockey.dorsal.DorsalAirHockey;
 import air_hockey.frontal.FrontalAirHockey;
 import ca.ntro.app.NtroClientFx;
 import ca.ntro.app.backend.BackendRegistrar;
@@ -21,7 +23,7 @@ public class AirHockeyLocal implements NtroClientFx{
 	@Override
 	public void registerBackend(BackendRegistrar registrar) {
 		// TODO Auto-generated method stub
-		
+		registrar.registerBackend(new DorsalAirHockey());
 	}
 
 	@Override
@@ -33,7 +35,7 @@ public class AirHockeyLocal implements NtroClientFx{
 	@Override
 	public void registerMessages(MessageRegistrar registrar) {
 		// TODO Auto-generated method stub
-		
+		registrar.registerMessage(MsgAjouterPartie.class);
 	}
 
 	@Override

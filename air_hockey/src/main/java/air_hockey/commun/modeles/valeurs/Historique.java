@@ -8,10 +8,19 @@ public class Historique implements ModelValue {
 	private Usager Joueur1;
 	private Usager Joueur2;
 
+	private String idHistorique;
+
+	
 	public Historique() {
 		super();
 	}
 
+	public Historique(String idHistorique, Usager premierJoueur, Usager deuxiemeJoueur) {
+        setIdHistorique(idHistorique);
+        setJoueur1(premierJoueur);
+        setJoueur2(deuxiemeJoueur);
+    }
+	
 	public Usager getJoueur2() {
 		return Joueur2;
 	}
@@ -32,6 +41,14 @@ public class Historique implements ModelValue {
 	public String toString() {
 		return Joueur1.nomComplet() +" Vs " +Joueur2.nomComplet();
 		
+	}
+
+	public String getIdHistorique() {
+		return idHistorique;
+	}
+
+	public void setIdHistorique(String idHistorique) {
+		this.idHistorique = idHistorique;
 	}
 
 

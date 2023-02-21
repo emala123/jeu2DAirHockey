@@ -63,6 +63,7 @@
 <Pane styleClass="petit-v"/>
 
 <Button 
+		fx:id="boutonAdd"
         text="%add"
         styleClass="add-bouton"
         id="bouton-add">

@@ -4,9 +4,11 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import air_hockey.commun.messages.MsgAjouterPartie;
 import air_hockey.commun.modeles.ModeleHistorique;
 import air_hockey.commun.modeles.valeurs.Historique;
 import air_hockey.frontal.evenements.EvtAfficherMenuPrincipal;
+import air_hockey.maquettes.MaquetteUsagers;
 import ca.ntro.app.NtroApp;
 import ca.ntro.app.views.ViewFx;
 import ca.ntro.core.initialization.Ntro;
@@ -25,17 +27,39 @@ public class VueHistorique extends ViewFx {
 		private Button boutonRetourMenu;
 
 
+	  @FXML
+	  	private Button boutonAdd;
+	  
 	  
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Ntro.assertNotNull("labelParties", labelParties);
 		Ntro.assertNotNull("boutonRetourMenu", boutonRetourMenu);
+		Ntro.assertNotNull("boutonAdd", boutonAdd);
 		installerEvtAfficherMenuPrincipal();
+		installerMsgAjouterPartie();
 	}
 
 
 
-	    private void installerEvtAfficherMenuPrincipal() {
+	    private void installerMsgAjouterPartie() {
+		// TODO Auto-generated method stub
+	    	MsgAjouterPartie msgAjouterPartie = NtroApp.newMessage(MsgAjouterPartie.class);
+
+	    	boutonAdd.setOnAction(evtFx -> {
+	    		msgAjouterPartie.setPremierJoueur(MaquetteUsagers.usagerCourant());
+	    		MaquetteUsagers.prochainUsager();
+	    		msgAjouterPartie.setDeuxiemeJoueur(MaquetteUsagers.usagerCourant());
+	    		msgAjouterPartie.send();
+	    		
+	    		
+	    		MaquetteUsagers.prochainUsager();
+	    	});
+	}
+
+
+
+		private void installerEvtAfficherMenuPrincipal() {
 		// TODO Auto-generated method stub
 	    	
 

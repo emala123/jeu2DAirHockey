@@ -40,6 +40,10 @@ public class FrontalAirHockey implements FrontendFx {
     	registrar.registerDefaultResources("/chaines_fr.properties");
     	registrar.registerResources(NtroApp.locale("en"), 
                 "/chaines_en.properties");
+    	registrar.registerResources(NtroApp.locale("es"), 
+                "/chaines_es.properties");
+    	registrar.registerResources(NtroApp.locale("de"), 
+                "/chaines_de.properties");
     }
 
     @Override

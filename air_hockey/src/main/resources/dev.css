@@ -4,13 +4,13 @@
 }
 
 #vue-racine {
-    -fx-border-color:#4682B4;
+    
 }
 
 #vue-historique {
--fx-background-color:#87CEEB;
-    -fx-border-color:#4169E1;	
 	
+-fx-background-color:#87CEEB;
+-fx-border-color:white;
 }
 
 
