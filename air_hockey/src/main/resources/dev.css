@@ -13,6 +13,10 @@
 -fx-border-color:white;
 }
 
+#vue-menu {
+-fx-background-color:#87CEEB;
+-fx-border-color:white;
+}
 
 .gros-bouton {
 
