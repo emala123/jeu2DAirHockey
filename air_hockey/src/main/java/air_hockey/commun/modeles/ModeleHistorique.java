@@ -7,10 +7,10 @@ import air_hockey.commun.modeles.valeurs.Historique;
 import air_hockey.commun.modeles.valeurs.Usager;
 import air_hockey.frontal.vues.VueHistorique;
 import ca.ntro.app.models.Model;
-import ca.ntro.app.models.Watch;
+import ca.ntro.app.models.WatchJson;
 import ca.ntro.app.models.WriteObjectGraph;
 
-public class ModeleHistorique implements Model, Watch, WriteObjectGraph {
+public class ModeleHistorique implements Model, WatchJson, WriteObjectGraph {
 
 	private long prochainIdHistorique = 1;
 	

@@ -22,27 +22,12 @@ public class Navigation {
 
             	 afficherVueFileAttente(subTasks);
 
-                 creerVuePartie(subTasks);
                  afficherVuePartie(subTasks);
 
              });
     }
     
-    private static void creerVuePartie(FrontendTasks tasks) {
-
-        tasks.task(create(VuePartie.class))
-
-             .waitsFor(viewLoader(VuePartie.class))
-
-             .thenExecutesAndReturnsValue(inputs -> {
-
-                 ViewLoader<VuePartie> viewLoader = inputs.get(viewLoader(VuePartie.class));
-
-                 VuePartie vuePartie = viewLoader.createView();
-
-                 return vuePartie;
-             });
-    }
+    
 
     private static void afficherVuePartie(FrontendTasks tasks) {
 

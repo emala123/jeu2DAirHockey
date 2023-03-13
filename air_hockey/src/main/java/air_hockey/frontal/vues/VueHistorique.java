@@ -32,7 +32,7 @@ public class VueHistorique extends ViewFx {
 	  
 	  
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	 public void initialiser() {
 		Ntro.assertNotNull("labelParties", labelParties);
 		Ntro.assertNotNull("boutonRetourMenu", boutonRetourMenu);
 		Ntro.assertNotNull("boutonAdd", boutonAdd);
@@ -42,7 +42,7 @@ public class VueHistorique extends ViewFx {
 
 
 
-	    private void installerMsgAjouterPartie() {
+	 	private void installerMsgAjouterPartie() {
 		// TODO Auto-generated method stub
 	    	MsgAjouterPartie msgAjouterPartie = NtroApp.newMessage(MsgAjouterPartie.class);
 

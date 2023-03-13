@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.ntro.app.models.Model;
-import ca.ntro.app.models.Watch;
+import ca.ntro.app.models.WatchJson;
 import ca.ntro.app.models.WriteObjectGraph;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,7 +12,7 @@ import pong.commun.modeles.valeurs.RendezVous;
 import pong.commun.modeles.valeurs.Usager;
 import pong.frontal.vues.VueFileAttente;
 
-public class ModeleFileAttente implements Model, Watch, WriteObjectGraph {
+public class ModeleFileAttente implements Model, WatchJson, WriteObjectGraph {
 
     private long prochainIdRendezVous = 1;
 

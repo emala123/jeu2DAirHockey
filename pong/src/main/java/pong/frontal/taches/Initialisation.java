@@ -2,6 +2,7 @@ package pong.frontal.taches;
 
 import ca.ntro.app.tasks.frontend.FrontendTasks;
 import pong.frontal.vues.VueFileAttente;
+import pong.frontal.vues.VuePartie;
 import pong.frontal.vues.VueRacine;
 
 import static ca.ntro.app.tasks.frontend.FrontendTasks.*;
@@ -28,10 +29,28 @@ public class Initialisation {
 					
 					afficherFenetre(subTasks);
 					
+					creerVuePartie(subTasks);
+					
 				});
 		
 	}
 
+	private static void creerVuePartie(FrontendTasks tasks) {
+
+        tasks.task(create(VuePartie.class))
+
+             .waitsFor(viewLoader(VuePartie.class))
+
+             .thenExecutesAndReturnsValue(inputs -> {
+
+                 ViewLoader<VuePartie> viewLoader = inputs.get(viewLoader(VuePartie.class));
+
+                 VuePartie vuePartie = viewLoader.createView();
+
+                 return vuePartie;
+             });
+    }
+	
 	private static void afficherFenetre(FrontendTasks subTasks) {
 
 		subTasks.task("afficherFenetre")

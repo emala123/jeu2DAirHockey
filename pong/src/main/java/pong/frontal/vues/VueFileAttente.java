@@ -1,6 +1,5 @@
 package pong.frontal.vues;
 
-import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -28,7 +27,7 @@ public class VueFileAttente extends ViewFx {
     private Button boutonSInscrire;
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	 public void initialiser() {
 		Ntro.assertNotNull("labelRendezVous", labelRendezVous);
 		Ntro.assertNotNull("boutonJoindrePartie", boutonJoindrePartie);
 		Ntro.assertNotNull("boutonSInscrire", boutonSInscrire);

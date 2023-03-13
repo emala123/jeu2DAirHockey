@@ -1,4 +1,4 @@
-package air_hockey.frontal.taches;
+	package air_hockey.frontal.taches;
 
 import static ca.ntro.app.tasks.frontend.FrontendTasks.*;
 
@@ -23,7 +23,7 @@ public class Navigation {
            
             	afficherVueHistorique(subTasks);
 
-            	creerVueMenu(subTasks);
+            	
             	afficherVueMenu(subTasks);
             		             	
             		  
@@ -31,21 +31,7 @@ public class Navigation {
              });
     }
     
-    private static void creerVueMenu(FrontendTasks tasks) {
-
-        tasks.task(create(VueMenu.class))
-
-             .waitsFor(viewLoader(VueMenu.class))
-
-             .thenExecutesAndReturnsValue(inputs -> {
-
-                 ViewLoader<VueMenu> viewLoader = inputs.get(viewLoader(VueMenu.class));
-
-                 VueMenu vueMenu = viewLoader.createView();
-
-                 return vueMenu;
-             });
-    }
+   
 
     private static void afficherVueMenu(FrontendTasks tasks) {
 

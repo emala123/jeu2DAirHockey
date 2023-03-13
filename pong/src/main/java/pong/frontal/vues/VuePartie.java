@@ -1,8 +1,5 @@
 package pong.frontal.vues;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import ca.ntro.app.NtroApp;
 import ca.ntro.app.views.ViewFx;
 import ca.ntro.core.initialization.Ntro;
@@ -16,7 +13,7 @@ public class VuePartie extends ViewFx {
 	private Button boutonQuitterPartie;
 	
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialiser() {
     	Ntro.assertNotNull("boutonQuitterPartie", boutonQuitterPartie);
     	installerEvtAfficherFileAttente();
     }

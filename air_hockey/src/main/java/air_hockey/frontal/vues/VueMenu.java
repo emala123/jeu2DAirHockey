@@ -1,6 +1,5 @@
 package air_hockey.frontal.vues;
 
-import java.net.URL;
 import java.util.ResourceBundle;
 
 import air_hockey.frontal.evenements.EvtAfficherHistorique;
@@ -19,7 +18,7 @@ public class VueMenu extends ViewFx{
 
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	 public void initialiser() {
 		// TODO Auto-generated method stub
 	
 
