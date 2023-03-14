@@ -1,6 +1,9 @@
 package pong.commun.modeles.valeurs;
 
+import ca.ntro.app.frontend.ViewLoader;
 import ca.ntro.app.models.ModelValue;
+import pong.frontal.fragments.FragmentPartieEnCours;
+import pong.frontal.fragments.FragmentRendezVous;
 
 public class RendezVous implements ModelValue {
 
@@ -16,6 +19,17 @@ public class RendezVous implements ModelValue {
 		setPremierJoueur(premierJoueur);
 	}
 
+	public FragmentRendezVous creerFragment(ViewLoader<FragmentRendezVous> viewLoaderRendezVous, 
+            ViewLoader<FragmentPartieEnCours> viewLoaderPartieEnCours) {
+
+		return viewLoaderRendezVous.createView();
+	}
+	
+	// ajouter
+    public void afficherSur(FragmentRendezVous fragmentRendezVous) {
+        fragmentRendezVous.afficherNomPremierJoueur(premierJoueur.getPrenom());
+    }
+	
 	public String getIdRendezVous() {
 		return idRendezVous;
 	}

@@ -1,6 +1,8 @@
 package pong.frontal.taches;
 
 import ca.ntro.app.tasks.frontend.FrontendTasks;
+import pong.frontal.fragments.FragmentPartieEnCours;
+import pong.frontal.fragments.FragmentRendezVous;
 import pong.frontal.vues.VueFileAttente;
 import pong.frontal.vues.VuePartie;
 import pong.frontal.vues.VueRacine;
@@ -35,6 +37,8 @@ public class Initialisation {
 		
 	}
 
+	
+	
 	private static void creerVuePartie(FrontendTasks tasks) {
 
         tasks.task(create(VuePartie.class))
@@ -103,13 +107,25 @@ public class Initialisation {
         tasks.task(create(VueFileAttente.class))
 
              .waitsFor(viewLoader(VueFileAttente.class))
+             
+          // ajouter
+             .waitsFor(viewLoader(FragmentRendezVous.class))
 
+             // ajouter
+             .waitsFor(viewLoader(FragmentPartieEnCours.class))
+             
              .thenExecutesAndReturnsValue(inputs -> {
 
                  ViewLoader<VueFileAttente> viewLoader = inputs.get(viewLoader(VueFileAttente.class));
 
+                 ViewLoader<FragmentRendezVous>    viewLoaderRendezVous    = inputs.get(viewLoader(FragmentRendezVous.class));
+                 ViewLoader<FragmentPartieEnCours> viewLoaderPartieEnCours = inputs.get(viewLoader(FragmentPartieEnCours.class));	
+                 
                  VueFileAttente vueFileAttente = viewLoader.createView();
-
+                 
+                 vueFileAttente.setViewLoaderRendezVous(viewLoaderRendezVous);
+                 vueFileAttente.setViewLoaderPartieEnCours(viewLoaderPartieEnCours);
+                 
                  return vueFileAttente;
              });
     }
@@ -126,7 +142,7 @@ public class Initialisation {
 
                   VueRacine      vueRacine      = inputs.get(created(VueRacine.class));
                   VueFileAttente vueFileAttente = inputs.get(created(VueFileAttente.class));
-
+                  
                   vueRacine.afficherSousVue(vueFileAttente);
 
               });

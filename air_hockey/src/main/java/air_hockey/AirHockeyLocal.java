@@ -2,8 +2,8 @@ package air_hockey;
 
 import air_hockey.commun.messages.MsgAjouterPartie;
 import air_hockey.commun.modeles.ModeleHistorique;
-import air_hockey.commun.modeles.valeurs.Historique;
-import air_hockey.commun.modeles.valeurs.Usager;
+import air_hockey.commun.valeurs.Historique;
+import air_hockey.commun.valeurs.Usager;
 import air_hockey.dorsal.DorsalAirHockey;
 import air_hockey.frontal.FrontalAirHockey;
 import ca.ntro.app.NtroClientFx;

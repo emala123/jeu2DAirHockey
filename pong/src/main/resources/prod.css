@@ -9,3 +9,50 @@
 #vue-file-attente {
     -fx-border-color:darkblue;
 }
+.petit-espace-vertical {
+    -fx-min-height:10;
+    -fx-max-height:50;
+}
+
+.grand-espace-vertical {
+    -fx-min-height:50;
+    -fx-max-height:200;
+}
+
+.petit-espace-horizontal {
+    -fx-min-width:10;
+    -fx-max-width:50;
+}
+
+.grand-espace-horizontal {
+    -fx-min-width:50;
+    -fx-max-width:200;
+}
+
+.conteneur-parent{
+    -fx-border-color:black;
+}
+
+#conteneur-rendez-vous{
+    -fx-alignment:top-center;
+}
+.bouton-rouge {
+    -fx-background-color: 
+        linear-gradient(from 90% 100% to 0% 100%, #b72353 0%, #9f2836 100%),
+        #a83145,
+        #ea5c63,
+        radial-gradient(center 50% 50%, radius 100%, #ea5c62, #d33a54);
+}
+
+.rendez-vous {
+   -fx-padding: 8 15 15 15;
+   -fx-background-color: derive(black, 75%);
+   -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+   -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+   -fx-background-radius: 8;
+}
+
+.label-nom-joueur{
+   -fx-text-fill: derive(black, 25%);
+   -fx-font-size:3em;
+}

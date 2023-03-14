@@ -1,4 +1,4 @@
-package air_hockey.commun.modeles.valeurs;
+package air_hockey.commun.valeurs;
 
 import ca.ntro.app.models.ModelValue;
 

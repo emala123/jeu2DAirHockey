@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 import air_hockey.commun.messages.MsgAjouterPartie;
 import air_hockey.commun.modeles.ModeleHistorique;
-import air_hockey.commun.modeles.valeurs.Historique;
+import air_hockey.commun.valeurs.Historique;
 import air_hockey.frontal.evenements.EvtAfficherMenuPrincipal;
 import air_hockey.maquettes.MaquetteUsagers;
 import ca.ntro.app.NtroApp;

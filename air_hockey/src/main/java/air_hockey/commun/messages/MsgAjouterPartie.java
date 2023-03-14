@@ -1,7 +1,7 @@
 package air_hockey.commun.messages;
 
 import air_hockey.commun.modeles.ModeleHistorique;
-import air_hockey.commun.modeles.valeurs.Usager;
+import air_hockey.commun.valeurs.Usager;
 import ca.ntro.app.messages.MessageNtro;
 
 public class MsgAjouterPartie extends MessageNtro{

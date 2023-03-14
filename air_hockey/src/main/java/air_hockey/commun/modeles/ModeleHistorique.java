@@ -3,8 +3,8 @@ package air_hockey.commun.modeles;
 import java.util.ArrayList;
 import java.util.List;
 
-import air_hockey.commun.modeles.valeurs.Historique;
-import air_hockey.commun.modeles.valeurs.Usager;
+import air_hockey.commun.valeurs.Historique;
+import air_hockey.commun.valeurs.Usager;
 import air_hockey.frontal.vues.VueHistorique;
 import ca.ntro.app.models.Model;
 import ca.ntro.app.models.WatchJson;
@@ -76,3 +76,4 @@ public class ModeleHistorique implements Model, WatchJson, WriteObjectGraph {
 	}
 	
 }
+

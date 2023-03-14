@@ -2,7 +2,7 @@ package air_hockey.maquettes;
 
 import java.util.List;
 
-import air_hockey.commun.modeles.valeurs.Usager;
+import air_hockey.commun.valeurs.Usager;
 import ca.ntro.core.initialization.Ntro;
 
 public class MaquetteUsagers {

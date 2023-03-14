@@ -39,3 +39,110 @@
 #vue-partie {
     -fx-border-color:darkgreen;
 }
+.petit-espace-vertical {
+    -fx-min-height:10;
+    -fx-max-height:50;
+    -fx-background-color:pink;
+    -fx-opacity:0.2;
+}
+
+.grand-espace-vertical {
+    -fx-min-height:50;
+    -fx-max-height:200;
+    -fx-background-color:pink;
+    -fx-opacity:0.2;
+}
+
+.petit-espace-horizontal {
+    -fx-min-width:10;
+    -fx-max-width:50;
+    -fx-background-color:pink;
+    -fx-opacity:0.2;
+}
+
+.grand-espace-horizontal {
+    -fx-min-width:50;
+    -fx-max-width:200;
+    -fx-background-color:pink;
+    -fx-opacity:0.2;
+}
+
+.conteneur-parent{
+    -fx-border-color:black;
+}
+
+#conteneur-rendez-vous{
+    -fx-min-height:100; 
+    -fx-min-width:100;
+    -fx-alignment:top-center;
+}
+.logo {
+    -fx-min-width:50px;
+    -fx-max-width:200px;
+
+    -fx-min-height:50px;
+    -fx-max-height:200px;
+}
+.bouton-rouge {
+    -fx-background-color: 
+        linear-gradient(from 90% 100% to 0% 100%, #b72353 0%, #9f2836 100%),
+        #a83145,
+        #ea5c63,
+        radial-gradient(center 50% 50%, radius 100%, #ea5c62, #d33a54);
+}
+
+.rendez-vous {
+   -fx-padding: 8 15 15 15;
+   -fx-background-color: derive(black, 75%);
+   -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+   -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+   -fx-background-radius: 8;
+}
+
+.label-nom-joueur{
+   -fx-text-fill: derive(black, 25%);
+   -fx-font-size:3em;
+}
+.combo-box .arrow, .combo-box .arrow-button {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+}
+
+.combo-box {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color:transparent;
+    -fx-background:transparent;
+}
+
+.combo-box-popup {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color:gray;
+    -fx-background:transparent;
+}
+
+.list-view {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color:gray;
+    -fx-background:gray;
+    -fx-border-color:transparent;
+    -fx-border-color:transparent;
+}
+
+.list-cell {
+    -fx-background-color:transparent;
+    -fx-background:transparent;
+}
+
+.list-cell:hover {
+    -fx-background-color:lightgray;
+    -fx-background:lightgray;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+}

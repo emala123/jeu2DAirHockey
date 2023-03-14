@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.*?>
+
+<!-- ... -->
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+    fx:controller="pong.frontal.fragments.FragmentRendezVous" 
+    styleClass="conteneur,vue-rendez-vous">
+    <HBox>
+        <Pane styleClass="grand-espace-horizontal"/>
+        <!-- ajouter hgrow -->
+        <HBox HBox.hgrow="ALWAYS" styleClass="conteneur,rendez-vous" fx:id="horizontalOuVertical">
+            <Button 
+                fx:id="boutonJoindrePartie" 
+                text="%joindrePartie"
+                styleClass="gros-bouton">
+            </Button>
+            <Pane minHeight="20" minWidth="20"/>
+            <Label
+                fx:id="labelNomPremierJoueur"
+                styleClass="label-nom-joueur">
+            </Label>
+            <!-- ajouter hgrow -->
+            <Pane HBox.hgrow="ALWAYS" minHeight="20" minWidth="20"/>
+            <Button 
+                fx:id="boutonRetirerRendezVous" 
+                text="%retirerRendezVous"
+                styleClass="gros-bouton,bouton-rouge">
+            </Button>
+        </HBox>
+        <Pane styleClass="grand-espace-horizontal"/>
+    </HBox>
+    <Pane styleClass="petit-espace-vertical"/>
+</VBox>

@@ -41,9 +41,18 @@ public class ModeleFileAttente implements Model, WatchJson, WriteObjectGraph {
 		this.lesRendezVous = lesRendezVous;
 	}
     
-	 public void afficherSur(VueFileAttente vueFileAttente) {
-
-	        vueFileAttente.afficherRendezVousEnTexte(this.toString());
+	
+	
+	public void afficherSur(VueFileAttente vueFileAttente) {
+		
+		// ajouter
+        vueFileAttente.viderListeRendezVous();
+        
+        // ajouter
+        for(RendezVous rendezVous : lesRendezVous) {
+            
+            vueFileAttente.ajouterRendezVous(rendezVous);
+        }
 	    }
 	
 	 @Override
