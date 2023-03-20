@@ -1,8 +1,5 @@
 package pong.frontal.vues;
 
-import java.util.List;
-import java.util.ResourceBundle;
-
 import ca.ntro.app.NtroApp;
 import ca.ntro.app.frontend.ViewLoader;
 import ca.ntro.app.fx.controls.ResizableAvatar;
@@ -14,9 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import pong.commun.messages.MsgAjouterRendezVous;
-import pong.commun.modeles.ModeleFileAttente;
-import pong.commun.modeles.valeurs.RendezVous;
-import pong.evenements.EvtAfficherPartie;
+import pong.commun.valeurs.RendezVous;
+import pong.frontal.evenements.EvtAfficherPartie;
 import pong.frontal.fragments.FragmentPartieEnCours;
 import pong.frontal.fragments.FragmentRendezVous;
 import pong.maquettes.MaquetteUsagers;
@@ -24,45 +20,53 @@ import pong.maquettes.MaquetteUsagers;
 public class VueFileAttente extends ViewFx {
 
 	@FXML
+	private Button boutonSInscrire;
+
+	@FXML
 	private VBox conteneurRendezVous;
 
 	@FXML
-	private Button boutonSInscrire;
-	
-	 @FXML
-	 private ResizableAvatar logo;  // ajouter
+	private ResizableAvatar logo; // ajouter
 
-	 private ViewLoader<FragmentRendezVous> viewLoaderRendezVous;
-	 
-	 private ViewLoader<FragmentPartieEnCours> viewLoaderPartieEnCours;
-	 
-	 
-	 
+	private ViewLoader<FragmentRendezVous> viewLoaderRendezVous;
+	private ViewLoader<FragmentPartieEnCours> viewLoaderPartieEnCours;
+
+	
+	
 	@Override
 	public void initialiser() {
 
 		Ntro.assertNotNull("boutonSInscrire", boutonSInscrire);
 		Ntro.assertNotNull("conteneurRendezVous", conteneurRendezVous);
+		installerMsgAjouterRendezVous();
 		Ntro.assertNotNull(logo);
-        logo.setImage(new Image("/avatar.png"));
-
+		logo.setImage(new Image("/avatar.png"));
 	}
-	
-	 public void ajouterRendezVous(RendezVous rendezVous) {
-         FragmentRendezVous fragment = rendezVous.creerFragment(viewLoaderRendezVous, viewLoaderPartieEnCours);
-         rendezVous.afficherSur(fragment);
 
-         conteneurRendezVous.getChildren().add(fragment.rootNode());
-     }
-	
-	 public void viderListeRendezVous() {
-         conteneurRendezVous.getChildren().clear();
-     }
-	 
-	public void afficher(ModeleFileAttente modele) {
+	// ajouter
+	public void ajouterRendezVous(RendezVous rendezVous) {
+		FragmentRendezVous fragment = rendezVous.creerFragment(viewLoaderRendezVous, viewLoaderPartieEnCours);
+		rendezVous.afficherSur(fragment);
 
-		List<RendezVous> rendezVous = modele.getLesRendezVous();
+		conteneurRendezVous.getChildren().add(fragment.rootNode());
+	}
 
+	// ajouter
+	public void viderListeRendezVous() {
+		conteneurRendezVous.getChildren().clear();
+	}
+
+	private void installerMsgAjouterRendezVous() {
+
+		MsgAjouterRendezVous msgAjouterRendezVous = NtroApp.newMessage(MsgAjouterRendezVous.class);
+
+		boutonSInscrire.setOnAction(evtFx -> {
+
+			msgAjouterRendezVous.setPremierJoueur(MaquetteUsagers.usagerCourant());
+			msgAjouterRendezVous.send();
+
+			MaquetteUsagers.prochainUsager();
+		});
 	}
 
 	public ViewLoader<FragmentRendezVous> getViewLoaderRendezVous() {

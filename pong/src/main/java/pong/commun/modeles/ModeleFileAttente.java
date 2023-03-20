@@ -6,32 +6,23 @@ import java.util.List;
 import ca.ntro.app.models.Model;
 import ca.ntro.app.models.WatchJson;
 import ca.ntro.app.models.WriteObjectGraph;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import pong.commun.modeles.valeurs.RendezVous;
-import pong.commun.modeles.valeurs.Usager;
+import pong.commun.valeurs.RendezVous;
+import pong.commun.valeurs.Usager;
 import pong.frontal.vues.VueFileAttente;
 
 public class ModeleFileAttente implements Model, WatchJson, WriteObjectGraph {
 
-    private long prochainIdRendezVous = 1;
+	private long prochainIdRendezVous = 1;
 
-    private List<RendezVous> lesRendezVous = new ArrayList<>();
-    
-    @FXML
-    private Label labelRendezVous;
-    
-    public long getProchainIdRendezVous() {
-        return prochainIdRendezVous;
-    }
+	private List<RendezVous> lesRendezVous = new ArrayList<>();
 
-    public void setProchainIdRendezVous(long prochainIdRendezVous) {
-        this.prochainIdRendezVous = prochainIdRendezVous;
-    }
-    
-    public ModeleFileAttente() {
+	public long getProchainIdRendezVous() {
+		return prochainIdRendezVous;
+	}
 
-    }
+	public void setProchainIdRendezVous(long prochainIdRendezVous) {
+		this.prochainIdRendezVous = prochainIdRendezVous;
+	}
 
 	public List<RendezVous> getLesRendezVous() {
 		return lesRendezVous;
@@ -40,12 +31,30 @@ public class ModeleFileAttente implements Model, WatchJson, WriteObjectGraph {
 	public void setLesRendezVous(List<RendezVous> lesRendezVous) {
 		this.lesRendezVous = lesRendezVous;
 	}
-    
-	
+
+	public ModeleFileAttente() {
+
+	}
+
+	// ajouter
+    public void retirerRendezVous(String idRendezVous) {
+        int indiceRendezVous = -1;
+        
+        for(int i = 0; i < lesRendezVous.size(); i++) {
+            if(lesRendezVous.get(i).getIdRendezVous().equals(idRendezVous)) {
+                indiceRendezVous = i;
+                break;
+            }
+        }
+        
+        if(indiceRendezVous >= 0) {
+            lesRendezVous.remove(indiceRendezVous);
+        }
+    }
 	
 	public void afficherSur(VueFileAttente vueFileAttente) {
-		
-		// ajouter
+
+        // ajouter
         vueFileAttente.viderListeRendezVous();
         
         // ajouter
@@ -53,43 +62,43 @@ public class ModeleFileAttente implements Model, WatchJson, WriteObjectGraph {
             
             vueFileAttente.ajouterRendezVous(rendezVous);
         }
-	    }
+    }
 	
-	 @Override
-	    public String toString() {
+	public String ajouterRendezVous(Usager premierJoueur) {
+		String idRendezVous = genererIdRendezVous();
+		RendezVous rendezVous = new RendezVous(idRendezVous, premierJoueur);
 
-	        StringBuilder builder = new StringBuilder();
-	        int numeroRendezVous = 1;
+		lesRendezVous.add(rendezVous);
+		
+		return idRendezVous;
+	}
 
-	        for(RendezVous rendezVous : lesRendezVous) {
+	private String genererIdRendezVous() {
+		String idRendezVous = String.valueOf(prochainIdRendezVous);
+		prochainIdRendezVous++;
 
-	            builder.append(numeroRendezVous);
-	            builder.append(". ");
-	            builder.append(rendezVous.toString());
-	            builder.append("\n");
+		return idRendezVous;
+	}
+	
+	
+	public String toString() {
 
-	            numeroRendezVous++;
-	        }
+		StringBuilder builder = new StringBuilder();
+		int numeroRendezVous = 1;
+		
+		for(RendezVous rendezVous : lesRendezVous) {
 
-	        return builder.toString();
-	    }
-	 
-	 public void ajouterRendezVous(Usager premierJoueur) {
+			builder.append(numeroRendezVous);
+			builder.append(". ");
+			builder.append(rendezVous.toString());
+			builder.append("\n");
 
-	        String idRendezVous = genererIdRendezVous();
+			numeroRendezVous++;
+		}
 
-	        RendezVous rendezVous = new RendezVous(idRendezVous, premierJoueur);
+		return builder.toString();
+	}
 
-	        lesRendezVous.add(rendezVous);
-	    }
 
-	    private String genererIdRendezVous() {
-	        String idRendezVous = String.valueOf(prochainIdRendezVous);
-	        prochainIdRendezVous++;
-
-	        return idRendezVous;
-	    }
-	 
-	 
-	 
+	
 }

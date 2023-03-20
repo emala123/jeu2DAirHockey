@@ -1,44 +1,59 @@
 package pong.dorsal.taches;
 
-import static ca.ntro.app.tasks.backend.BackendTasks.*;
-
 import ca.ntro.app.tasks.backend.BackendTasks;
 import pong.commun.messages.MsgAjouterRendezVous;
+import pong.commun.messages.MsgRetirerRendezVous;
 import pong.commun.modeles.ModeleFileAttente;
 
+import static ca.ntro.app.tasks.backend.BackendTasks.*;
+
 public class ModifierFileAttente {
+	
+	public static void creerTaches(BackendTasks tasks) {
+		
+		tasks.taskGroup("ModifierFileAttente")
 
-    public static void creerTaches(BackendTasks tasks) {
+		     .waitsFor(model(ModeleFileAttente.class))
 
-        tasks.taskGroup("ModifierFileAttente")
+		     .contains(subTasks -> {
+		    	  
+				   ajouterRendezVous(subTasks);
+				   
+				   // ajouter
+	                 retirerRendezVous(subTasks);
 
-             .waitsFor(model(ModeleFileAttente.class))
+		      });
+	}
 
-             .andContains(subTasks -> {
+	// ajouter
+    private static void retirerRendezVous(BackendTasks subTasks) {
+        subTasks.task("retirerRendezVous")
 
-                // XXX: ajouter l'appel!
-                ajouterRendezVous(subTasks);
-
-              });
-    }
-
-    private static void ajouterRendezVous(BackendTasks subTasks) {
-        subTasks.task("ajouterRendezVous")
-
-             .waitsFor(message(MsgAjouterRendezVous.class))
-
+             .waitsFor(message(MsgRetirerRendezVous.class))
+             
              .thenExecutes(inputs -> {
 
-                
-                 // Prêt à ajouter un rendez-vous!
-                 MsgAjouterRendezVous msgAjouterRendezVous = inputs.get(message(MsgAjouterRendezVous.class));
+                 MsgRetirerRendezVous msgRetirerRendezVous = inputs.get(message(MsgRetirerRendezVous.class));
                  ModeleFileAttente    fileAttente          = inputs.get(model(ModeleFileAttente.class));
 
-                 // Intuitivement, on veut
-                 // fileAttente.ajouterRendezVous(msgAjouterRendezVous);
-
-                 // Avec l'inversion des dépendances, on va plutôt faire:
-                 msgAjouterRendezVous.ajouterA(fileAttente);
+                 msgRetirerRendezVous.retirerDe(fileAttente);
              });
+
     }
+	
+	private static void ajouterRendezVous(BackendTasks tasks) {
+		tasks.task("ajouterRendezVous")
+
+
+		     .waitsFor(message(MsgAjouterRendezVous.class))
+		     
+		     .thenExecutes(inputs -> {
+
+		    	 MsgAjouterRendezVous msgAjouterRendezVous = inputs.get(message(MsgAjouterRendezVous.class));
+		    	 ModeleFileAttente    fileAttente          = inputs.get(model(ModeleFileAttente.class));
+
+		    	 msgAjouterRendezVous.ajouterA(fileAttente);
+		     });
+	}
+
 }

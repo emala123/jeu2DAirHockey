@@ -1,13 +1,107 @@
 .conteneur {
-    -fx-border-width:10;
+    -fx-alignment: center;
+    -fx-background-color:gray;
+}
+
+/* http://fxexperience.com/2011/12/styling-fx-buttons-with-css/ */
+.gros-bouton {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+
+.gros-bouton:pressed {
+    -fx-font-size: 1em;
+}
+
+.gros-bouton:hover {
+    -fx-cursor: hand;
+}
+
+.bouton-rouge {
+    -fx-background-color: 
+        linear-gradient(from 90% 100% to 0% 100%, #b72353 0%, #9f2836 100%),
+        #a83145,
+        #ea5c63,
+        radial-gradient(center 50% 50%, radius 100%, #ea5c62, #d33a54);
 }
 
 #vue-racine {
-    -fx-border-color:darkred;
 }
 
 #vue-file-attente {
-    -fx-border-color:darkblue;
+}
+
+#vue-partie {
+}
+
+#label-rendez-vous{
+    -fx-min-height:100;
+}
+
+.petit-espace-horizontal {
+    -fx-min-width:30;
+}
+
+.petit-espace-vertical {
+    -fx-min-height:30;
+}
+
+.espace-vertical {
+    -fx-min-height:50;
+}
+
+#label-rendez-vous{
+    -fx-min-height:100;
+}
+
+.moyen-texte{
+    -fx-font-size:2em;
+}
+.petit-espace-vertical {
+    -fx-min-height:10;
+    -fx-max-height:50;
+    -fx-background-color:pink;
+    -fx-opacity:0.2;
+}
+
+.grand-espace-vertical {
+    -fx-min-height:50;
+    -fx-max-height:200;
+    -fx-background-color:pink;
+    -fx-opacity:0.2;
+}
+
+.petit-espace-horizontal {
+    -fx-min-width:10;
+    -fx-max-width:50;
+    -fx-background-color:pink;
+    -fx-opacity:0.2;
+}
+
+.grand-espace-horizontal {
+    -fx-min-width:50;
+    -fx-max-width:200;
+    -fx-background-color:pink;
+    -fx-opacity:0.2;
+}
+
+.conteneur-parent{
+    -fx-border-color:black;
+}
+
+#conteneur-rendez-vous{
+    -fx-min-height:100; 
+    -fx-min-width:100;
+    -fx-alignment:top-center;
 }
 .petit-espace-vertical {
     -fx-min-height:10;
@@ -36,23 +130,10 @@
 #conteneur-rendez-vous{
     -fx-alignment:top-center;
 }
-.bouton-rouge {
-    -fx-background-color: 
-        linear-gradient(from 90% 100% to 0% 100%, #b72353 0%, #9f2836 100%),
-        #a83145,
-        #ea5c63,
-        radial-gradient(center 50% 50%, radius 100%, #ea5c62, #d33a54);
-}
+.logo {
+    -fx-min-width:50px;
+    -fx-max-width:200px;
 
-.rendez-vous {
-   -fx-padding: 8 15 15 15;
-   -fx-background-color: derive(black, 75%);
-   -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
-   -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
-   -fx-background-radius: 8;
-}
-
-.label-nom-joueur{
-   -fx-text-fill: derive(black, 25%);
-   -fx-font-size:3em;
+    -fx-min-height:50px;
+    -fx-max-height:200px;
 }

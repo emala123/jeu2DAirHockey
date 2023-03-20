@@ -7,16 +7,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.HBox?>
 <?import ca.ntro.app.fx.controls.ResizableAvatar?>
+<?import pong.frontal.controles.FlexBoxRendezVous?>
 
 <!-- ... -->
 
 <VBox xmlns:fx="http://javafx.com/fxml"
     fx:controller="pong.frontal.fragments.FragmentPartieEnCours" 
     styleClass="conteneur,vue-rendez-vous">
+     <!-- remplacer HBox par FlexBoxRendezVous -->
     <HBox>
         <Pane styleClass="grand-espace-horizontal"/>
         <!-- ajouter hgrow -->
-        <HBox HBox.hgrow="ALWAYS" styleClass="conteneur,rendez-vous">
+            <FlexBoxRendezVous HBox.hgrow="ALWAYS" styleClass="conteneur,rendez-vous">
             <Button 
                 fx:id="boutonJoindrePartie" 
                 text="%joindrePartie"
@@ -46,8 +48,9 @@
                 text="%retirerRendezVous"
                 styleClass="gros-bouton,bouton-rouge">
             </Button>
-        </HBox>
+        </FlexBoxRendezVous>
         <Pane styleClass="grand-espace-horizontal"/>
+    <!-- remplacer HBox par FlexBoxRendezVous -->
     </HBox>
     <Pane styleClass="petit-espace-vertical"/>
 </VBox>

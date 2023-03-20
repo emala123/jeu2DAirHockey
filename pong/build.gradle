@@ -41,7 +41,7 @@ def commonConfig = {
 
 def localConfig = {
    configure commonConfig
-   main = "pong.PongLocal"
+   mainClass = "pong.PongLocal"
    jvmArgs('-Dsun.java2d.opengl=true')
 }
 

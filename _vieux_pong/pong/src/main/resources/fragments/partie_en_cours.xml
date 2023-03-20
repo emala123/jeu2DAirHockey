@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
+<?import ca.ntro.app.fx.controls.ResizableAvatar?>
+
+<!-- ... -->
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+    fx:controller="pong.frontal.fragments.FragmentPartieEnCours" 
+    styleClass="conteneur,vue-rendez-vous">
+    <HBox>
+        <Pane styleClass="grand-espace-horizontal"/>
+        <!-- ajouter hgrow -->
+        <HBox HBox.hgrow="ALWAYS" styleClass="conteneur,rendez-vous">
+            <Button 
+                fx:id="boutonJoindrePartie" 
+                text="%joindrePartie"
+                styleClass="gros-bouton">
+            </Button>
+            <Pane minHeight="20" minWidth="20"/>
+            <HBox alignment="CENTER_LEFT">
+                <Label
+                    fx:id="labelNomPremierJoueur"
+                    styleClass="label-nom-joueur">
+                </Label>
+                <Pane minWidth="20" minHeight="20"/>
+                <Label
+                    text="Vs"
+                    styleClass="label-nom-joueur">
+                </Label>
+                <Pane minWidth="20" minHeight="20"/>
+                <Label
+                    fx:id="labelNomDeuxiemeJoueur"
+                    styleClass="label-nom-joueur">
+                </Label>
+            </HBox>
+            <!-- ajouter hgrow -->
+            <Pane HBox.hgrow="ALWAYS" minWidth="20" minHeight="20"/>
+            <Button 
+                fx:id="boutonRetirerRendezVous" 
+                text="%retirerRendezVous"
+                styleClass="gros-bouton,bouton-rouge">
+            </Button>
+        </HBox>
+        <Pane styleClass="grand-espace-horizontal"/>
+    </HBox>
+    <Pane styleClass="petit-espace-vertical"/>
+</VBox>

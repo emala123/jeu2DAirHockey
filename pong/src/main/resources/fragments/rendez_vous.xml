@@ -3,16 +3,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.*?>
+<?import pong.frontal.controles.FlexBoxRendezVous?>
+<?import javafx.scene.layout.Pane?>
 
 <!-- ... -->
 
 <VBox xmlns:fx="http://javafx.com/fxml"
     fx:controller="pong.frontal.fragments.FragmentRendezVous" 
     styleClass="conteneur,vue-rendez-vous">
+     <!-- remplacer HBox par FlexBoxRendezVous -->
     <HBox>
         <Pane styleClass="grand-espace-horizontal"/>
         <!-- ajouter hgrow -->
-        <HBox HBox.hgrow="ALWAYS" styleClass="conteneur,rendez-vous" fx:id="horizontalOuVertical">
+         <FlexBoxRendezVous HBox.hgrow="ALWAYS" styleClass="conteneur,rendez-vous">
             <Button 
                 fx:id="boutonJoindrePartie" 
                 text="%joindrePartie"
@@ -30,8 +33,9 @@
                 text="%retirerRendezVous"
                 styleClass="gros-bouton,bouton-rouge">
             </Button>
-        </HBox>
+        </FlexBoxRendezVous>
         <Pane styleClass="grand-espace-horizontal"/>
+     <!-- remplacer HBox par FlexBoxRendezVous -->
     </HBox>
     <Pane styleClass="petit-espace-vertical"/>
 </VBox>

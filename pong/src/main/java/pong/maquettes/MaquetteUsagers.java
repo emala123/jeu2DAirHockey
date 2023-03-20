@@ -3,117 +3,117 @@ package pong.maquettes;
 import java.util.List;
 
 import ca.ntro.core.initialization.Ntro;
-import pong.commun.modeles.valeurs.Usager;
+import pong.commun.valeurs.Usager;
 
 public class MaquetteUsagers {
+	
+	public static boolean modeTest = true;
+	
+	private static Usager usagerCourant = usagerAleatoire();
+	
+	public static boolean siUsagerLocal(Usager usager) {
+		boolean siLocal = false;
+		
+		if(modeTest) {
 
-    public static boolean modeTest = true;
+			siLocal = true;
 
-    private static Usager usagerCourant = usagerAleatoire();
+		}else if(usagerCourant.equals(usager)) {
+			
+			siLocal = true;
+		}
 
-    public static boolean siUsagerLocal(Usager usager) {
-        boolean siLocal = false;
+		return siLocal;
+	}
 
-        if(modeTest) {
+	public static Usager usagerCourant() {
+		return usagerCourant;
+	}
 
-            siLocal = true;
+	public static void prochainUsager() {
+		usagerCourant = eviterRepetitionDePrenom(usagerAleatoire());
+	}
 
-        }else if(usagerCourant.equals(usager)) {
+	private static Usager usagerAleatoire() {
+		Usager usager = new Usager();
+		
+		usager.setId(idAleatoire());
+		usager.setPrenom(prenomAleatoire());
+		usager.setNom(nomAleatoire());
+		
+		return usager;
+	}
 
-            siLocal = true;
-        }
+	private static Usager eviterRepetitionDePrenom(Usager usagerAleatoire) {
 
-        return siLocal;
-    }
+		while(usagerAleatoire.getPrenom().equals(usagerCourant.getPrenom())) {
 
-    public static Usager usagerCourant() {
-        return usagerCourant;
-    }
-
-    public static void prochainUsager() {
-        usagerCourant = eviterRepetitionDePrenom(usagerAleatoire());
-    }
-
-    private static Usager usagerAleatoire() {
-        Usager usager = new Usager();
-
-        usager.setId(idAleatoire());
-        usager.setPrenom(prenomAleatoire());
-        usager.setNom(nomAleatoire());
-
-        return usager;
-    }
-
-    private static Usager eviterRepetitionDePrenom(Usager usagerAleatoire) {
-
-        while(usagerAleatoire.getPrenom().equals(usagerCourant.getPrenom())) {
-
-            usagerAleatoire.setPrenom(prenomAleatoire());
-        }
-
-        return usagerAleatoire;
-    }
+			usagerAleatoire.setPrenom(prenomAleatoire());
+		}
+		
+		return usagerAleatoire;
+	}
 
 
-    private static String idAleatoire() {
-        return Ntro.random().nextId(4);
-    }
+	private static String idAleatoire() {
+		return Ntro.random().nextId(4);
+	}
+	
+	private static String prenomAleatoire() {
 
-    private static String prenomAleatoire() {
+		List<String> choixDeNoms = List.of("Alice", 
+				                           "Bob", 
+				                           "Chaaya", 
+				                           "Dominic", 
+				                           "√âlisabeth", 
+				                           "Firas", 
+				                           "Gregson",
+				                           "Mehdi",
+				                           "Louis",
+				                           "Marcel",
+				                           "Ashwin",
+				                           "Ichiro",
+				                           "Jun");
 
-        List<String> choixDeNoms = List.of("Alice", 
-                                           "Bob", 
-                                           "Chaaya", 
-                                           "Dominic", 
-                                           "…lisabeth", 
-                                           "Firas", 
-                                           "Gregson",
-                                           "Mehdi",
-                                           "Louis",
-                                           "Marcel",
-                                           "Ashwin",
-                                           "Ichiro",
-                                           "Jun");
+		return Ntro.random().choice(choixDeNoms);
+	}
 
-        return Ntro.random().choice(choixDeNoms);
-    }
+	private static String nomAleatoire() {
 
-    private static String nomAleatoire() {
+		List<String> choixDeNoms = List.of("Abdenouri", 
+				                           "Ahmadi", 
+				                           "Augustin", 
+				                           "Chauss√©", 
+				                           "Delisle", 
+				                           "Heer", 
+				                           "Lagrois",
+				                           "Daverna",
+				                           "Gonzales",
+				                           "Medjoubi",
+				                           "Castillo",
+				                           "Josan",
+				                           "Yi");
 
-        List<String> choixDeNoms = List.of("Abdenouri", 
-                                           "Ahmadi", 
-                                           "Augustin", 
-                                           "ChaussÈ", 
-                                           "Delisle", 
-                                           "Heer", 
-                                           "Lagrois",
-                                           "Daverna",
-                                           "Gonzales",
-                                           "Medjoubi",
-                                           "Castillo",
-                                           "Josan",
-                                           "Yi");
+		return Ntro.random().choice(choixDeNoms);
+	}
 
-        return Ntro.random().choice(choixDeNoms);
-    }
+	public static void initialiser(String[] args) {
+		String prenom = null;
 
-    public static void initialiser(String[] args) {
-        String prenom = null;
+		if(args.length > 0) {
 
-        if(args.length > 0) {
+			prenom = args[0];
+			modeTest = false;
 
-            prenom = args[0];
-            modeTest = false;
+		}else {
+			
+			prenom = prenomAleatoire();
+			
+		}
 
-        }else {
-
-            prenom = prenomAleatoire();
-
-        }
-
-        usagerCourant = new Usager(idAleatoire(), 
-                                   prenom, 
-                                   nomAleatoire());
-    }
+		usagerCourant = new Usager(idAleatoire(), 
+				                   prenom, 
+				                   nomAleatoire());
+	}
 
 }
