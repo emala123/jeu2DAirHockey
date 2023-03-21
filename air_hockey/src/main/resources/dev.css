@@ -41,7 +41,7 @@
     -fx-cursor: hand;
 }
 
-.petit-v {
+.petit-espace-vertical {
 
     -fx-min-height:20px;
     -fx-max-height:100px;
@@ -94,3 +94,66 @@
 .del-bouton:hover {
     -fx-cursor: hand;
 }
+.bouton-rouge {
+    -fx-background-color: 
+        linear-gradient(from 90% 100% to 0% 100%, #b72353 0%, #9f2836 100%),
+        #a83145,
+        #ea5c63,
+        radial-gradient(center 50% 50%, radius 100%, #ea5c62, #d33a54);
+}
+
+.historique {
+   -fx-padding: 8 15 15 15;
+   -fx-background-color: derive(black, 75%);
+   -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+   -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+   -fx-background-radius: 8;
+}
+
+.label-nom-joueur{
+   -fx-text-fill: derive(black, 25%);
+   -fx-font-size:3em;
+}
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+ }
+ 
+ .scroll-bar .track {
+    -fx-background-color: derive(black, 75%);
+    -fx-border-color: transparent;
+    -fx-background-radius: 8;
+ }
+ 
+ .scroll-bar .thumb {
+     -fx-padding: 8 15 15 15;
+     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+     -fx-background-radius: 8;
+     -fx-background-color: 
+         linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+         #9d4024,
+         #d86e3a,
+         radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+ }
+ 
+ .scroll-bar .increment-button,
+ .scroll-bar .decrement-button,
+ .scroll-bar .increment-arrow,
+ .scroll-bar .decrement-arrow,
+ .scroll-bar .corner {
+     -fx-shape : " ";    
+     -fx-background-color: transparent;
+     -fx-visibility: hidden;
+ }
+ 
+ .scroll-pane .viewport {
+     -fx-background-color:transparent;
+     -fx-background:transparent;
+ }
+ 
+ .scroll-pane {
+     -fx-background-color:transparent;
+     -fx-background:transparent;
+     -fx-hbar-policy:never;
+ }

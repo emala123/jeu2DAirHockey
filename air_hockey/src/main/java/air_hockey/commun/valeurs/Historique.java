@@ -1,26 +1,37 @@
 package air_hockey.commun.valeurs;
 
+import air_hockey.frontal.fragments.FragmentPartie;
+import ca.ntro.app.frontend.ViewLoader;
 import ca.ntro.app.models.ModelValue;
 
 public class Historique implements ModelValue {
 
-
 	private Usager Joueur1;
 	private Usager Joueur2;
 
-	private String idHistorique;
+	private String idPartie;
 
+	public FragmentPartie creerFragment(ViewLoader<FragmentPartie> viewLoaderPartie) {
+
+		return viewLoaderPartie.createView();
+	}
+	
+	public void afficherSur(FragmentPartie fragmentPartie) {
+		fragmentPartie.afficherNomPremierJoueur(Joueur1.nomComplet());
+		fragmentPartie.afficherNomDeuxiemeJoueur(Joueur2.nomComplet());
+		fragmentPartie.memoriserIdPartie(idPartie);
+    }
 	
 	public Historique() {
 		super();
 	}
 
-	public Historique(String idHistorique, Usager premierJoueur, Usager deuxiemeJoueur) {
-        setIdHistorique(idHistorique);
-        setJoueur1(premierJoueur);
-        setJoueur2(deuxiemeJoueur);
-    }
-	
+	public Historique(String idPartie, Usager premierJoueur, Usager deuxiemeJoueur) {
+		setIdPartie( idPartie);
+		setJoueur1(premierJoueur);
+		setJoueur2(deuxiemeJoueur);
+	}
+
 	public Usager getJoueur2() {
 		return Joueur2;
 	}
@@ -39,17 +50,16 @@ public class Historique implements ModelValue {
 
 	@Override
 	public String toString() {
-		return Joueur1.nomComplet() +" Vs " +Joueur2.nomComplet();
-		
+		return Joueur1.nomComplet() + " Vs " + Joueur2.nomComplet();
+
 	}
 
-	public String getIdHistorique() {
-		return idHistorique;
+	public String getIdPartie() {
+		return idPartie;
 	}
 
-	public void setIdHistorique(String idHistorique) {
-		this.idHistorique = idHistorique;
+	public void setIdPartie(String idPartie) {
+		this.idPartie = idPartie;
 	}
-
 
 }

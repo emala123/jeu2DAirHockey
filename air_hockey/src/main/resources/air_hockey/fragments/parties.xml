@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.*?>
+<?import air_hockey.frontal.controles.FlexBoxPartie?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+    fx:controller="air_hockey.frontal.fragments.FragmentPartie" 
+    styleClass="conteneur,vue-historique">
+    <HBox>
+        <Pane styleClass="grand-espace-horizontal"/>
+        <FlexBoxPartie HBox.hgrow="ALWAYS" styleClass="conteneur,historique" fx:id="horizontalOuVertical">
+            
+            <Pane minHeight="20" minWidth="20"/>
+            <Label
+                fx:id="labelNomPremierJoueur"
+                styleClass="label-nom-joueur">
+            </Label>
+            <Label
+                fx:id="labelNomDeuxiemeJoueur"
+                styleClass="label-nom-joueur">
+            </Label>
+            <Pane HBox.hgrow="ALWAYS" minHeight="20" minWidth="20"/>
+            <Button 
+                fx:id="boutonRetirerPartie" 
+                text="%retirerPartie"
+                styleClass="gros-bouton,bouton-rouge">
+            </Button>
+        </FlexBoxPartie>
+        <Pane styleClass="grand-espace-horizontal"/>
+    </HBox>
+    <Pane styleClass="petit-espace-vertical"/>
+</VBox>

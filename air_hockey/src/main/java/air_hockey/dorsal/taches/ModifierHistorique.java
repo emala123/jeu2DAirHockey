@@ -3,6 +3,7 @@ package air_hockey.dorsal.taches;
 import static ca.ntro.app.tasks.backend.BackendTasks.*;
 
 import air_hockey.commun.messages.MsgAjouterPartie;
+import air_hockey.commun.messages.MsgRetirerPartie;
 import air_hockey.commun.modeles.ModeleHistorique;
 import ca.ntro.app.tasks.backend.BackendTasks;
 
@@ -20,7 +21,7 @@ public class ModifierHistorique {
                   // qui modifie le modèle
             	 
             	 ajouterPartie(subTasks);
-            	 
+            	 retirerPartie(subTasks);
               });
     }
 
@@ -39,4 +40,20 @@ public class ModifierHistorique {
 				
 			});
 	}
+	
+	// ajouter
+    private static void retirerPartie(BackendTasks subTasks) {
+        subTasks.task("retirerPartie")
+
+             .waitsFor(message(MsgRetirerPartie.class))
+             
+             .thenExecutes(inputs -> {
+
+            	 MsgRetirerPartie msgRetirerPartie = inputs.get(message(MsgRetirerPartie.class));
+                 ModeleHistorique    historique          = inputs.get(model(ModeleHistorique.class));
+
+                 msgRetirerPartie.retirerDe(historique);
+             });
+
+    }
 }

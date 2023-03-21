@@ -28,6 +28,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import ca.ntro.app.fx.controls.ResizableAvatar?>
 <?import pong.frontal.controles.CanvasPartie?>
+<?import javafx.scene.control.ScrollPane?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
     fx:controller="pong.frontal.vues.VueFileAttente" 
@@ -56,11 +57,15 @@
 
         <!-- ajouter hgrow -->
         <Pane HBox.hgrow="ALWAYS" styleClass="grand-espace-horizontal"/>
-
+		<!-- entourer le VBox d'un ScrollPane -->
+    <ScrollPane HBox.hgrow="ALWAYS" fitToWidth="true">
+        <content>
         <!-- ajouter hgrow -->
         <VBox HBox.hgrow="ALWAYS" styleClass="conteneur" fx:id="conteneurRendezVous" id="conteneur-rendez-vous">
         </VBox>
-
+  </content>
+    </ScrollPane>
+    <!-- fermer le ScrollPane -->
         <!-- ajouter hgrow -->
         <Pane HBox.hgrow="ALWAYS" styleClass="grand-espace-horizontal"/>
 

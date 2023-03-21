@@ -10,6 +10,7 @@ import air_hockey.frontal.vues.VueMenu;
 import air_hockey.frontal.vues.VueRacine;
 import air_hockey.frontal.evenements.EvtAfficherHistorique;
 import air_hockey.frontal.evenements.EvtAfficherMenuPrincipal;
+import air_hockey.frontal.fragments.FragmentPartie;
 import air_hockey.frontal.taches.AfficherHistorique;
 import air_hockey.frontal.taches.Initialisation;
 import air_hockey.frontal.taches.Navigation;
@@ -44,6 +45,7 @@ public class FrontalAirHockey implements FrontendFx {
                 "/chaines_es.properties");
     	registrar.registerResources(NtroApp.locale("de"), 
                 "/chaines_de.properties");
+    	registrar.registerFragment(FragmentPartie.class, "/air_hockey/fragments/parties.xml");
     }
 
     @Override

@@ -12,8 +12,8 @@ import ca.ntro.app.models.WriteObjectGraph;
 
 public class ModeleHistorique implements Model, WatchJson, WriteObjectGraph {
 
-	private long prochainIdHistorique = 1;
-	
+	private long prochainIdPartie = 1;
+
 	private List<Historique> lesParties = new ArrayList<>();
 
 	public ModeleHistorique() {
@@ -21,7 +21,13 @@ public class ModeleHistorique implements Model, WatchJson, WriteObjectGraph {
 	}
 
 	public void afficherSur(VueHistorique vueHistorique) {
-		vueHistorique.afficherHistoriqueEnTexte(this.toString());
+		vueHistorique.viderListePartie();
+
+		// ajouter
+		for (Historique partie : lesParties) {
+
+			vueHistorique.ajouterPartie(partie);
+		}
 	}
 
 	public List<Historique> getLesParties() {
@@ -51,29 +57,43 @@ public class ModeleHistorique implements Model, WatchJson, WriteObjectGraph {
 		return builder.toString();
 	}
 
-	public long getProchainIdHistorique() {
-		return prochainIdHistorique;
+	public long getProchainIdPartie() {
+		return prochainIdPartie;
 	}
 
-	public void setProchainIdHistorique(long prochainIdHistorique) {
-		this.prochainIdHistorique = prochainIdHistorique;
+	public void setProchainIdPartie(long prochainIdPartie) {
+		this.prochainIdPartie = prochainIdPartie;
 	}
-	
+
 	public void ajouterPartie(Usager premierJoueur, Usager deuxiemeJoueur) {
-		String idHistorique = genererIdHistorique();
-		
-		Historique historique = new Historique(idHistorique, premierJoueur, deuxiemeJoueur);
-		
+		String idPartie = genererIdPartie();
+
+		Historique historique = new Historique(idPartie, premierJoueur, deuxiemeJoueur);
+
 		lesParties.add(historique);
 	}
 
-	private String genererIdHistorique() {
-		String idHistorique = String.valueOf(prochainIdHistorique);
-		prochainIdHistorique++;
-		
-		return idHistorique;
-		
-	}
-	
-}
+	public void retirerPartie(String idPartie) {
+		int indicePartie = -1;
 
+		for (int i = 0; i < lesParties.size(); i++) {
+			if (lesParties.get(i).getIdPartie().equals(idPartie)) {
+				indicePartie = i;
+				break;
+			}
+		}
+
+		if (indicePartie >= 0) {
+			lesParties.remove(indicePartie);
+		}
+	}
+
+	private String genererIdPartie() {
+		String idHistorique = String.valueOf(prochainIdPartie);
+		prochainIdPartie++;
+
+		return idHistorique;
+
+	}
+
+}

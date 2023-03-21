@@ -1,91 +1,95 @@
 package air_hockey.frontal.vues;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
-
 import air_hockey.commun.messages.MsgAjouterPartie;
 import air_hockey.commun.modeles.ModeleHistorique;
 import air_hockey.commun.valeurs.Historique;
 import air_hockey.frontal.evenements.EvtAfficherMenuPrincipal;
+import air_hockey.frontal.fragments.FragmentPartie;
 import air_hockey.maquettes.MaquetteUsagers;
 import ca.ntro.app.NtroApp;
+import ca.ntro.app.frontend.ViewLoader;
 import ca.ntro.app.views.ViewFx;
 import ca.ntro.core.initialization.Ntro;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 public class VueHistorique extends ViewFx {
 
-	  @FXML
-	    private Label labelParties;
-	
-	 
+	@FXML
+	private Button boutonRetourMenu;
 
-	  @FXML
-		private Button boutonRetourMenu;
+	@FXML
+	private Button boutonAdd;
 
+	@FXML
+	private VBox conteneurHistorique;
 
-	  @FXML
-	  	private Button boutonAdd;
-	  
-	  
+	private ViewLoader<FragmentPartie> viewLoaderPartie;
+
 	@Override
-	 public void initialiser() {
-		Ntro.assertNotNull("labelParties", labelParties);
+	public void initialiser() {
 		Ntro.assertNotNull("boutonRetourMenu", boutonRetourMenu);
 		Ntro.assertNotNull("boutonAdd", boutonAdd);
-		installerEvtAfficherMenuPrincipal();
+		Ntro.assertNotNull("conteneurHistorique", conteneurHistorique);
 		installerMsgAjouterPartie();
+		installerEvtAfficherMenuPrincipal();
 	}
 
-
-
-	 	private void installerMsgAjouterPartie() {
+	private void installerEvtAfficherMenuPrincipal() {
 		// TODO Auto-generated method stub
-	    	MsgAjouterPartie msgAjouterPartie = NtroApp.newMessage(MsgAjouterPartie.class);
 
-	    	boutonAdd.setOnAction(evtFx -> {
-	    		msgAjouterPartie.setPremierJoueur(MaquetteUsagers.usagerCourant());
-	    		MaquetteUsagers.prochainUsager();
-	    		msgAjouterPartie.setDeuxiemeJoueur(MaquetteUsagers.usagerCourant());
-	    		msgAjouterPartie.send();
-	    		
-	    		
-	    		MaquetteUsagers.prochainUsager();
-	    	});
+		EvtAfficherMenuPrincipal evtNtro = NtroApp.newEvent(EvtAfficherMenuPrincipal.class);
+
+		boutonRetourMenu.setOnAction(evtFx -> {
+
+			System.out.println("[VueHistorique] clic:" + evtFx.getEventType());
+			evtNtro.trigger();
+
+		});
+
 	}
 
+	// ajouter
+	public void ajouterPartie(Historique partie) {
+		FragmentPartie fragment = partie.creerFragment(viewLoaderPartie);
+		partie.afficherSur(fragment);
 
+		conteneurHistorique.getChildren().add(fragment.rootNode());
+	}
 
-		private void installerEvtAfficherMenuPrincipal() {
+	// ajouter
+	public void viderListePartie() {
+		conteneurHistorique.getChildren().clear();
+	}
+
+	private void installerMsgAjouterPartie() {
 		// TODO Auto-generated method stub
-	    	
+		MsgAjouterPartie msgAjouterPartie = NtroApp.newMessage(MsgAjouterPartie.class);
 
-					EvtAfficherMenuPrincipal evtNtro = NtroApp.newEvent(EvtAfficherMenuPrincipal.class);
+		boutonAdd.setOnAction(evtFx -> {
+			msgAjouterPartie.setPremierJoueur(MaquetteUsagers.usagerCourant());
+			MaquetteUsagers.prochainUsager();
+			msgAjouterPartie.setDeuxiemeJoueur(MaquetteUsagers.usagerCourant());
+			msgAjouterPartie.send();
 
-					boutonRetourMenu.setOnAction(evtFx -> {
-						
-						System.out.println("[VueHistorique] clic:" + evtFx.getEventType());
-						evtNtro.trigger();
-
-					});
-				
+			MaquetteUsagers.prochainUsager();
+		});
 	}
 
+	public void afficher(ModeleHistorique modele) {
 
+		List<Historique> historique = modele.getLesParties();
 
-		public void afficher(ModeleHistorique modele){
-
-	        List<Historique> historique = modele.getLesParties();
-
-	  
 	}
 
-	    public void afficherHistoriqueEnTexte(String msg) {
-	    	labelParties.setText(msg);
-	    }
-	    
-	
+	public ViewLoader<FragmentPartie> getViewLoaderPartie() {
+		return viewLoaderPartie;
+	}
+
+	public void setViewLoaderPartie(ViewLoader<FragmentPartie> viewLoaderPartie) {
+		this.viewLoaderPartie = viewLoaderPartie;
+	}
+
 }
