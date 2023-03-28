@@ -27,7 +27,7 @@
     styleClass="conteneur"
     id="vue-partie">
 
- 	<Pane styleClass="petit-espace-vertical"/>
+    <Pane styleClass="petit-espace-vertical"/>
 
     <HBox VBox.vgrow="ALWAYS" styleClass="conteneur">
 
@@ -50,7 +50,7 @@
         text="%quitterPartie"
         styleClass="gros-bouton"
         id="bouton-quitter-partie">
-     </Button>
+    </Button>
 
     <Pane styleClass="petit-espace-vertical"/>
 

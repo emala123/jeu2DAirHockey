@@ -4,49 +4,23 @@ import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
+import pong.commun.monde2d.MondePong2d;
 
 public class CanvasPartie extends ResizableWorld2dCanvasFx {
 
-	 // ajouter
-    private Image logo;
-    
     @Override
     protected void initialize() {
 
-        logo = new Image("/logo.png");
+    	 setInitialWorldSize(MondePong2d.LARGEUR_MONDE, MondePong2d.HAUTEUR_MONDE);
 
-        // ajouter
-        onRedraw(() -> {
-            dessinerLeMonde2d();
-        });
     }
 
-    // ajouter
-    private void dessinerLeMonde2d() {
-        drawOnWorld(gc -> {
+	public void afficherFps(String fps) {
+		// TODO Auto-generated method stub
+		drawOnCanvas(gc -> {
 
-            gc.setFill(Color.web("#9d4024"));
+			gc.fillText(fps, 0, 12);
 
-            gc.fillRect(0,
-                        0, 
-                        getWorldWidth(), 
-                        getWorldHeight());
-
-            gc.setFill(Color.DARKGRAY);
-
-            gc.fillArc(getWorldWidth() / 2 - 100, 
-                       getWorldHeight() /2 - 100,
-                       200,
-                       200, 
-                       0, 
-                       360, 
-                       ArcType.CHORD);
-
-            gc.drawImage(logo, 
-                         getWorldWidth() / 2 - logo.getWidth() / 2,
-                         getWorldHeight() / 2 - logo.getHeight() / 2);
-
-
-        });
-    }
+		});
+	}
 }
