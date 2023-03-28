@@ -5,6 +5,7 @@ import ca.ntro.app.frontend.FrontendFx;
 import ca.ntro.app.frontend.ViewRegistrarFx;
 import ca.ntro.app.frontend.events.EventRegistrar;
 import ca.ntro.app.tasks.frontend.FrontendTasks;
+import pong.evenements.EvtActionJoueur;
 import pong.frontal.donnees.DonneesVuePartie;
 import pong.frontal.evenements.EvtAfficherFileAttente;
 import pong.frontal.evenements.EvtAfficherPartie;
@@ -35,6 +36,7 @@ public class FrontalPong implements FrontendFx {
 	public void registerEvents(EventRegistrar registrar) {
 		registrar.registerEvent(EvtAfficherFileAttente.class);
 		registrar.registerEvent(EvtAfficherPartie.class);
+		registrar.registerEvent(EvtActionJoueur.class);
 	}
 
 	@Override
@@ -51,6 +53,7 @@ public class FrontalPong implements FrontendFx {
 		registrar.registerFragment(FragmentRendezVous.class, "/fragments/rendez_vous.xml");
         registrar.registerFragment(FragmentPartieEnCours.class, "/fragments/partie_en_cours.xml");
         registrar.registerViewData(DonneesVuePartie.class);
+        
 	}
 
 	@Override

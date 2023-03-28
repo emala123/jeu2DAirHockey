@@ -9,6 +9,8 @@ import air_hockey.frontal.vues.VueMenu;
 import air_hockey.frontal.vues.VueRacine;
 import ca.ntro.app.frontend.ViewLoader;
 import ca.ntro.app.tasks.frontend.FrontendTasks;
+import air_hockey.frontal.evenements.EvtAfficherPartie;
+import air_hockey.frontal.vues.VuePartie;
 
 public class Navigation {
 
@@ -26,12 +28,29 @@ public class Navigation {
             	
             	afficherVueMenu(subTasks);
             		             	
+            	afficherVuePartie(subTasks);
             		  
 
              });
     }
     
    
+    private static void afficherVuePartie(FrontendTasks tasks) {
+
+		tasks.task("afficherVuePartie")
+		
+		     .waitsFor(created(VuePartie.class))
+		
+		     .waitsFor(event(EvtAfficherPartie.class))
+		      
+		     .thenExecutes(inputs -> {
+
+		    	 VueRacine vueRacine = inputs.get(created(VueRacine.class));
+		    	 VuePartie vuePartie = inputs.get(created(VuePartie.class));
+		    	  
+		    	 vueRacine.afficherSousVue(vuePartie);
+		     });
+	}
 
     private static void afficherVueMenu(FrontendTasks tasks) {
 

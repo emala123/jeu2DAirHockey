@@ -1,6 +1,7 @@
 package air_hockey.frontal.taches;
 
 import ca.ntro.app.tasks.frontend.FrontendTasks;
+import air_hockey.frontal.vues.VuePartie;
 import air_hockey.frontal.fragments.FragmentPartie;
 import air_hockey.frontal.vues.VueHistorique;
 import air_hockey.frontal.vues.VueMenu;
@@ -31,12 +32,31 @@ public class Initialisation {
 					afficherFenetre(subTasks);
 					
 					creerVueMenu(subTasks);
+					
+					creerVuePartie(subTasks);
 	            	
+					
 					
 				});
 		
 	}
 
+	 private static void creerVuePartie(FrontendTasks tasks) {
+
+	        tasks.task(create(VuePartie.class))
+
+	             .waitsFor(viewLoader(VuePartie.class))
+
+	             .thenExecutesAndReturnsValue(inputs -> {
+	                 
+	                 ViewLoader<VuePartie> viewLoader = inputs.get(viewLoader(VuePartie.class));
+	                 
+	                 VuePartie vuePartie = viewLoader.createView();
+
+	                 return vuePartie;
+	             });
+	    }
+	
 	 private static void creerVueMenu(FrontendTasks tasks) {
 
 	        tasks.task(create(VueMenu.class))
@@ -140,5 +160,7 @@ public class Initialisation {
 
               });
     }
+    
+   
     
 }

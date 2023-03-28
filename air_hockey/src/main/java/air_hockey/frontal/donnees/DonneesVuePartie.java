@@ -1,23 +1,21 @@
-package pong.frontal.donnees;
+package air_hockey.frontal.donnees;
 
+import air_hockey.commun.enums.Action;
+import air_hockey.commun.enums.Cadran;
+import air_hockey.commun.monde2d.MondeAir_Hockey2d;
+import air_hockey.frontal.vues.VuePartie;
 import ca.ntro.app.frontend.ViewData;
 import ca.ntro.core.initialization.Ntro;
-import pong.commun.enums.Action;
-import pong.commun.enums.Cadran;
-import pong.commun.monde2d.MondePong2d;
-import pong.frontal.vues.VuePartie;
 
 public class DonneesVuePartie implements ViewData {
 
-	private MondePong2d mondePong2d = new MondePong2d();
-	private String fpsCourant = "0";
-
-	// ajouter
 	private static long CALCULER_FPS_A_CHAQUE_X_MILLISECONDES = 200;
 
-	// ajouter
 	private long horodatageDernierCalculFps = Ntro.time().nowMilliseconds();
 	private long imagesAfficheesDepuisDernierCalculFps = 0;
+	
+	private MondeAir_Hockey2d mondeAir_Hockey2d = new MondeAir_Hockey2d();
+	private String fpsCourant = "0";
 
 	public void afficherSur(VuePartie vuePartie) {
 
@@ -25,9 +23,10 @@ public class DonneesVuePartie implements ViewData {
 
 		vuePartie.viderCanvas();
 		vuePartie.afficherImagesParSeconde("FPS " + fpsCourant);
-		vuePartie.afficherPong2d(mondePong2d);
+		vuePartie.afficherAir_Hockey2d(mondeAir_Hockey2d);
 
 		imagesAfficheesDepuisDernierCalculFps++;
+
 	}
 
 	private void calculerFpsSiNecessaire() {
@@ -50,16 +49,15 @@ public class DonneesVuePartie implements ViewData {
 	}
 
 	 public void reagirTempsQuiPasse(double elapsedTime) {
-	        mondePong2d.onTimePasses(elapsedTime);
+	        mondeAir_Hockey2d.onTimePasses(elapsedTime);
 	    }
 	 
-	 public void copierDonnesDe(MondePong2d mondePong2d) {
-	        mondePong2d.copyDataFrom(mondePong2d);
+	 public void copierDonnesDe(MondeAir_Hockey2d mondeAir_Hockey2d) {
+		 mondeAir_Hockey2d.copyDataFrom(mondeAir_Hockey2d);
 	    }
 
 	 public void appliquerActionJoueur(Cadran cadran, Action action) {
-	        mondePong2d.appliquerActionJoueur(cadran, action);
+		 mondeAir_Hockey2d.appliquerActionJoueur(cadran, action);
 	    }
-
 	 
 }

@@ -1,7 +1,12 @@
 package air_hockey;
 
 import air_hockey.commun.messages.MsgAjouterPartie;
+import air_hockey.commun.messages.MsgAjouterPoint;
 import air_hockey.commun.modeles.ModeleHistorique;
+import air_hockey.commun.modeles.ModelePartie;
+import air_hockey.commun.monde2d.MondeAir_Hockey2d;
+import air_hockey.commun.monde2d.Poussoir2d;
+import air_hockey.commun.monde2d.Puck2d;
 import air_hockey.commun.valeurs.Historique;
 import air_hockey.commun.valeurs.Usager;
 import air_hockey.dorsal.DorsalAirHockey;
@@ -36,6 +41,7 @@ public class AirHockeyLocal implements NtroClientFx{
 	public void registerMessages(MessageRegistrar registrar) {
 		// TODO Auto-generated method stub
 		registrar.registerMessage(MsgAjouterPartie.class);
+		registrar.registerMessage(MsgAjouterPoint.class);
 	}
 
 	@Override
@@ -44,6 +50,10 @@ public class AirHockeyLocal implements NtroClientFx{
 		registrar.registerModel(ModeleHistorique.class);
 		registrar.registerValue(Usager.class);
 		registrar.registerValue(Historique.class);
+		registrar.registerModel(ModelePartie.class);
+		registrar.registerValue(MondeAir_Hockey2d.class);
+		registrar.registerValue(Puck2d.class);
+		registrar.registerValue(Poussoir2d.class);
 	}
 
 }

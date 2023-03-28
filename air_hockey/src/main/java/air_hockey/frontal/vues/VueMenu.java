@@ -3,7 +3,7 @@ package air_hockey.frontal.vues;
 import java.util.ResourceBundle;
 
 import air_hockey.frontal.evenements.EvtAfficherHistorique;
-import air_hockey.frontal.evenements.EvtAfficherMenuPrincipal;
+import air_hockey.frontal.evenements.EvtAfficherPartie;
 import ca.ntro.app.NtroApp;
 import ca.ntro.app.views.ViewFx;
 import ca.ntro.core.initialization.Ntro;
@@ -16,6 +16,9 @@ public class VueMenu extends ViewFx{
 	@FXML
 	private Button boutonHistorique;
 
+	@FXML
+	private Button boutonPartie;
+
 	
 	@Override
 	 public void initialiser() {
@@ -23,12 +26,30 @@ public class VueMenu extends ViewFx{
 	
 
 				Ntro.assertNotNull("boutonHistorique", boutonHistorique);
-			
+				Ntro.assertNotNull("boutonPartie", boutonPartie);
 			
 				installerEvtAfficherHistorique();
+				installerEvtAfficherPartie();
 				
 
 	}
+	
+
+	
+
+	private void installerEvtAfficherPartie() {
+		// TODO Auto-generated method stub
+EvtAfficherPartie evtNtro = NtroApp.newEvent(EvtAfficherPartie.class);
+		
+boutonPartie.setOnAction(evtFx -> {
+
+			System.out.println("[VueMenu] clic:" + evtFx.getEventType());
+			evtNtro.trigger();
+
+		});
+	}
+
+
 
 
 	private void installerEvtAfficherHistorique() {
