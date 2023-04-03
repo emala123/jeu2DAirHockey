@@ -39,14 +39,54 @@ def commonConfig = {
    jvmArgs('-Dfile.encoding=UTF-8')
 }
 
+
+// ajouter
+def clientConfig = {
+   configure commonConfig
+   mainClass = "pong.ClientPong"
+   jvmArgs('-Dsun.java2d.opengl=true')
+}
+
+
+// ajouter
+def serverConfig = {
+   configure commonConfig
+   mainClass = "pong.ServeurPong"
+}
+
 def localConfig = {
    configure commonConfig
    mainClass = "pong.PongLocal"
    jvmArgs('-Dsun.java2d.opengl=true')
 }
 
+// ajouter
+task(client, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+}
+
+// ajouter
+task(serveur, dependsOn: 'classes', type: JavaExec) {
+   configure serverConfig
+}
+
 task(local, dependsOn: 'classes', type: JavaExec) {
    configure localConfig
+}
+
+task(alice, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+   args("aaaa", "Alice","Yi")
+}
+
+task(bob, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+   args("bbbb", "Bob","Castillo")
+}
+
+task(charlie, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+   args("cccc", "Charlie","Ahmadi")
 }
 
 task(localFr, dependsOn: 'classes', type: JavaExec) {
