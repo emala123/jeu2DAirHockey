@@ -1,5 +1,5 @@
 package air_hockey.commun.enums;
 
 public enum Cadran {
-	GAUCHE, DROITE;
+	GAUCHE, DROITE, LES_DEUX;
 }

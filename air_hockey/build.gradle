@@ -39,10 +39,48 @@ def commonConfig = {
    jvmArgs('-Dfile.encoding=UTF-8')
 }
 
+// ajouter
+def clientConfig = {
+   configure commonConfig
+   mainClass = "air_hockey.ClientAirHockey"
+   jvmArgs('-Dsun.java2d.opengl=true')
+}
+
+// ajouter
+def serverConfig = {
+   configure commonConfig
+   mainClass = "air_hockey.ServeurAirHockey"
+}
+
 def localConfig = {
    configure commonConfig
    main = "air_hockey.AirHockeyLocal"
    jvmArgs('-Dsun.java2d.opengl=true')
+}
+
+// ajouter
+task(client, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+}
+
+// ajouter
+task(serveur, dependsOn: 'classes', type: JavaExec) {
+   configure serverConfig
+}
+
+task(alice, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+   args("aaaa", "Alice","Yi")
+}
+
+task(bob, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+   args("bbbb", "Bob","Castillo")
+}
+
+task(charlie, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+   args("cccc", "Charlie","Ahmadi")
 }
 
 task(local, dependsOn: 'classes', type: JavaExec) {
