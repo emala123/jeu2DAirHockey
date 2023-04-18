@@ -8,11 +8,14 @@ import ca.ntro.app.models.ModelRegistrar;
 import pong.commun.Declarations;
 import pong.dorsal.DorsalPong;
 import pong.frontal.FrontalPong;
+import pong.maquettes.MaquetteSession;
 
 
 public class PongLocal implements NtroClientFx {
 
     public static void main(String[] args) {
+    	MaquetteSession.initialiser(args);
+    
         NtroClientFx.launch(args);
     }
 
