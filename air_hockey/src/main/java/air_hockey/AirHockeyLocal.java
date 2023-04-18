@@ -3,6 +3,7 @@ package air_hockey;
 import air_hockey.commun.Declarations;
 import air_hockey.dorsal.DorsalAirHockey;
 import air_hockey.frontal.FrontalAirHockey;
+import air_hockey.maquettes.MaquetteSession;
 import ca.ntro.app.NtroClientFx;
 import ca.ntro.app.backend.BackendRegistrar;
 import ca.ntro.app.frontend.FrontendRegistrarFx;
@@ -14,6 +15,8 @@ public class AirHockeyLocal implements NtroClientFx{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		MaquetteSession.initialiser(args);
+		
 		NtroClientFx.launch(args);
 	}
 	

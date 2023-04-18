@@ -12,93 +12,92 @@ import ca.ntro.core.reflection.observer.Modified;
 
 public class AfficherPartie {
 
-    public static void creerTaches(FrontendTasks tasks) {
+	public static void creerTaches(FrontendTasks tasks, String idPartie) {
 
-        creerDonneesVuePartie(tasks);
-        
-        tasks.taskGroup("AfficherPartie")
+		creerDonneesVuePartie(tasks);
 
-        .waitsFor(created(DonneesVuePartie.class))
+		tasks.taskGroup("AfficherPartie")
 
-        .andContains(subTasks -> {
+				.waitsFor(created(DonneesVuePartie.class))
 
-           prochaineImagePartie(subTasks);
-           
-           observerModelePartie(subTasks);
-           
-           reagirActionJoueur(subTasks);
-           
+				.andContains(subTasks -> {
 
-        });
+					prochaineImagePartie(subTasks);
 
-    }
+					observerModelePartie(subTasks, idPartie);
 
-    private static void reagirActionJoueur(FrontendTasks tasks) {
+					reagirActionJoueur(subTasks);
 
-        tasks.task("reagirActionJoueur")
+				});
 
-                .waitsFor(event(EvtActionJoueur.class))
+	}
 
-                .thenExecutes(inputs -> {
+	private static void creerDonneesVuePartie(FrontendTasks tasks) {
 
-                    DonneesVuePartie donneesVuePartie = inputs.get(created(DonneesVuePartie.class));
-                    EvtActionJoueur  evtActionJoueur  = inputs.get(event(EvtActionJoueur.class));
+		tasks.task(create(DonneesVuePartie.class))
 
-                    evtActionJoueur.appliquerA(donneesVuePartie);
+				.waitsFor("Initialisation")
 
-                });
-    }
-    
-    private static void observerModelePartie(FrontendTasks tasks) {
+				.executesAndReturnsCreatedValue(inputs -> {
 
-        tasks.task("observerModelePartie")
+					return new DonneesVuePartie();
+				});
+	}
 
-                .waitsFor(modified(ModelePartie.class))
+	private static void reagirActionJoueur(FrontendTasks tasks) {
 
-                .thenExecutes(inputs -> {
+		tasks.task("reagirActionJoueur")
 
-                    VuePartie              vuePartie        = inputs.get(created(VuePartie.class));
-                    DonneesVuePartie       donneesVuePartie = inputs.get(created(DonneesVuePartie.class));
-                    Modified<ModelePartie> modifiedPartie   = inputs.get(modified(ModelePartie.class));
+				.waitsFor(event(EvtActionJoueur.class))
 
-                    ModelePartie modelePartie = modifiedPartie.currentValue();
+				.thenExecutes(inputs -> {
 
-                    modelePartie.afficherInfoPartieSur(vuePartie);
-                    modelePartie.copierDonneesDans(donneesVuePartie);
+					DonneesVuePartie donneesVuePartie = inputs.get(created(DonneesVuePartie.class));
+					EvtActionJoueur evtActionJoueur = inputs.get(event(EvtActionJoueur.class));
 
-                });
-    }
-    
-    private static void prochaineImagePartie(FrontendTasks subTasks) {
+					evtActionJoueur.appliquerA(donneesVuePartie);
 
-        subTasks.task("prochaineImagePartie")
+				});
+	}
 
-                 .waitsFor(clock().nextTick())
+	private static void observerModelePartie(FrontendTasks tasks, String idPartie) {
 
-                 .thenExecutes(inputs -> {
-                	 
-                	Tick             tick             = inputs.get(clock().nextTick());
-                	 
-                    DonneesVuePartie donneesVuePartie = inputs.get(created(DonneesVuePartie.class));
-                    VuePartie        vuePartie        = inputs.get(created(VuePartie.class));
-                    
-                    donneesVuePartie.reagirTempsQuiPasse(tick.elapsedTime());
+		tasks.task("observerModelePartie")
 
-                    
-                    // TODO: afficher le monde 2d
-                    donneesVuePartie.afficherSur(vuePartie);
-                });
-    }
-    
-    private static void creerDonneesVuePartie(FrontendTasks tasks) {
+				.waitsFor(modified(ModelePartie.class, idPartie))
 
-        tasks.task(create(DonneesVuePartie.class))
+				.thenExecutes(inputs -> {
 
-             .waitsFor("Initialisation")
+					VuePartie vuePartie = inputs.get(created(VuePartie.class));
+					DonneesVuePartie donneesVuePartie = inputs.get(created(DonneesVuePartie.class));
+					Modified<ModelePartie> modifiedPartie = inputs.get(modified(ModelePartie.class, idPartie));
 
-             .executesAndReturnsCreatedValue(inputs -> {
+					ModelePartie modelePartie = modifiedPartie.currentValue();
 
-                 return new DonneesVuePartie();
-             });
-    }
+					modelePartie.afficherInfoPartieSur(vuePartie);
+					modelePartie.copierDonneesDans(donneesVuePartie);
+
+				});
+	}
+
+	private static void prochaineImagePartie(FrontendTasks subTasks) {
+
+		subTasks.task("prochaineImagePartie")
+
+				.waitsFor(clock().nextTick())
+
+				.thenExecutes(inputs -> {
+
+					Tick tick = inputs.get(clock().nextTick());
+
+					DonneesVuePartie donneesVuePartie = inputs.get(created(DonneesVuePartie.class));
+					VuePartie vuePartie = inputs.get(created(VuePartie.class));
+
+					donneesVuePartie.reagirTempsQuiPasse(tick.elapsedTime());
+
+					// TODO: afficher le monde 2d
+					donneesVuePartie.afficherSur(vuePartie);
+				});
+	}
+
 }

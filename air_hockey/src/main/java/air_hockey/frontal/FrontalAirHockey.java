@@ -19,6 +19,7 @@ import air_hockey.frontal.taches.AfficherHistorique;
 import air_hockey.frontal.taches.AfficherPartie;
 import air_hockey.frontal.taches.Initialisation;
 import air_hockey.frontal.taches.Navigation;
+import air_hockey.maquettes.MaquetteSession;
 
 public class FrontalAirHockey implements FrontendFx {
 
@@ -28,7 +29,9 @@ public class FrontalAirHockey implements FrontendFx {
         Initialisation.creerTaches(tasks);
         AfficherHistorique.creerTaches(tasks);
         Navigation.creerTaches(tasks);
-        AfficherPartie.creerTaches(tasks);
+        //AfficherPartie.creerTaches(tasks);
+        // ajouter
+        AfficherPartie.creerTaches(tasks, MaquetteSession.usagerCourant().getId());
         
     }
 
