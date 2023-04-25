@@ -4,6 +4,7 @@ import static ca.ntro.app.tasks.backend.BackendTasks.*;
 
 import air_hockey.commun.messages.MsgAjouterPoint;
 import air_hockey.commun.modeles.ModeleJoueur;
+import air_hockey.commun.modeles.ModelePartie;
 import ca.ntro.app.tasks.backend.BackendTasks;
 
 public class ModifierJoueur {
@@ -16,7 +17,7 @@ public class ModifierJoueur {
 			
 			.contains(subTasks -> {
 				
-				ajouterPoint(subTasks, idLeaderboard);
+				//ajouterPoint(subTasks, idLeaderboard);
 		});
 	}
 	
@@ -29,7 +30,7 @@ public class ModifierJoueur {
         	.thenExecutes(inputs -> {
 
         		MsgAjouterPoint msgAjouterPoint = inputs.get(message(MsgAjouterPoint.class));
-        		ModeleJoueur partie = inputs.get(model(ModeleJoueur.class));
+        		ModelePartie partie = inputs.get(model(ModelePartie.class));
 
         		msgAjouterPoint.copierDonneesDans(partie);
         		msgAjouterPoint.ajouterPointA(partie);

@@ -3,6 +3,7 @@ package air_hockey.frontal.taches;
 import static ca.ntro.app.tasks.frontend.FrontendTasks.*;
 
 import air_hockey.commun.modeles.ModeleJoueur;
+import air_hockey.commun.modeles.ModelePartie;
 import air_hockey.frontal.donnees.DonneesVuePartie;
 import air_hockey.frontal.evenements.EvtActionJoueur;
 import air_hockey.frontal.vues.VuePartie;
@@ -30,9 +31,31 @@ public class AfficherPartie {
 				observerModeleJoueur(subTasks, idLeaderboard);
 				
 				reagirActionJoueur(subTasks,idLeaderboard);
+				
+				observerModelePartie(subTasks, idLeaderboard);
 		});
 	}
 	
+	private static void observerModelePartie(FrontendTasks tasks, String idLeaderboard) {
+		// TODO Auto-generated method stub
+		tasks.task("observerModelePartie")
+
+        	.waitsFor(modified(ModelePartie.class,idLeaderboard))
+
+        	.thenExecutes(inputs -> {
+
+        		VuePartie              vuePartie        = inputs.get(created(VuePartie.class));
+        		DonneesVuePartie       donneesVuePartie = inputs.get(created(DonneesVuePartie.class));
+        		Modified<ModelePartie> modifiedPartie   = inputs.get(modified(ModelePartie.class, idLeaderboard));
+
+        		ModelePartie modelePartie = modifiedPartie.currentValue();
+
+        		modelePartie.afficherInfoPartieSur(vuePartie);
+        		modelePartie.copierDonneesDans(donneesVuePartie);
+
+        });
+}
+
 	public static void supprimerTaches() {
 		if(premiereTache != null) {
 			premiereTache.removeFromGraph();

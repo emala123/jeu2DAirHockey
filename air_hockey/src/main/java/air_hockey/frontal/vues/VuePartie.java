@@ -25,10 +25,10 @@ public class VuePartie extends ViewFx{
 	private CanvasPartie canvasPartie;
 	
 	@FXML 
-	private Label labelPremierJoueur;
+	private Label labelNomPremierJoueur;
 	
 	@FXML
-	private Label labelDeuxiemeJoueur;
+	private Label labelNomDeuxiemeJoueur;
 	
 	@FXML
 	private Label labelScorePremierJoueur;
@@ -46,8 +46,8 @@ public class VuePartie extends ViewFx{
 		
 		Ntro.assertNotNull("boutonQuitterPartie", boutonQuitterPartie);
 		
-		Ntro.assertNotNull("labelPremierJoueur", labelPremierJoueur);
-		Ntro.assertNotNull("labelDeuxiemeJoueur", labelDeuxiemeJoueur);
+		Ntro.assertNotNull("labelNomPremierJoueur", labelNomPremierJoueur);
+		Ntro.assertNotNull("labelNomDeuxiemeJoueur", labelNomDeuxiemeJoueur);
 		
 		Ntro.assertNotNull("labelScorePremierJoueur", labelScorePremierJoueur);
 		Ntro.assertNotNull("labelScoreDeuxiemeJoueur", labelScoreDeuxiemeJoueur);
@@ -190,12 +190,12 @@ public class VuePartie extends ViewFx{
 		mondeAirHockey2d.drawOn(canvasPartie);
 	}
 	
-	public void afficherPremierJoueur(String premierJoueur) {
-		labelPremierJoueur.setText(premierJoueur);
+	public void afficherPremierJoueur(String nomPremierJoueur) {
+		labelNomPremierJoueur.setText(nomPremierJoueur);
 	}
 	
-	public void afficherDeuxiemeJoueur(String deuxiemeJoueur) {
-		labelDeuxiemeJoueur.setText(deuxiemeJoueur);
+	public void afficherDeuxiemeJoueur(String nomDeuxiemeJoueur) {
+		labelNomDeuxiemeJoueur.setText(nomDeuxiemeJoueur);
 	}
 	
 	public void afficherScorePremierJoueur(String scorePremierJoueur) {

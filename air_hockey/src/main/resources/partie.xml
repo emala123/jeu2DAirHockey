@@ -36,7 +36,7 @@
     	<Pane HBox.hgrow="ALWAYS" styleClass="grand-espace-horizontal"/>
     	
     	<Label
-    		fx:id="labelPremierJoueur"
+    		fx:id="labelNomPremierJoueur"
     		styleClass="label-nom-joueur">
     	</Label>
     	
@@ -66,7 +66,7 @@
     	<Pane HBox.hgrow="ALWAYS" styleClass="grand-espace-horizontal"/>
     	
     	<Label
-    		fx:id="labelDeuxiemeJoueur"
+    		fx:id="labelNomDeuxiemeJoueur"
     		styleClass="label-nom-joueur">
     	</Label>
     	

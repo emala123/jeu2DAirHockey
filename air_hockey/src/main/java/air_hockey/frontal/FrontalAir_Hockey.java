@@ -31,6 +31,8 @@ public class FrontalAir_Hockey implements FrontendFx{
 		AfficherLeaderboard.creerTaches(tasks);
 		
 		Navigation.creerTaches(tasks);
+		
+		
 	}
 
 	@Override
