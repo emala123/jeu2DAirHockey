@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import ca.ntro.app.fx.controls.ResizableImage?>
+<?import javafx.scene.control.ScrollPane?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+    fx:controller="air_hockey.frontal.vues.VueLeaderboard"
+    styleClass="conteneur"
+    id="vue-leaderboard">
+    
+    <Pane VBox.vgrow = "ALWAYS" styleClass="petit-v"/>
+    
+    <ResizableImage
+    	fx:id="logo"
+    	VBox.vgrow="ALWAYS"
+    	styleClass="logo">
+    </ResizableImage>
+    
+    <Button 
+    fx:id="boutonAjouterJoueur" 
+    text="%ajouterJoueur"
+    styleClass="gros-bouton"
+    id="bouton-Ajouter-Joueur">
+	</Button>
+	
+    <Label
+    	text="|">
+    </Label>
+    
+    <Label
+    	text="|">
+    </Label>
+    
+    <Label
+    	text="V">
+    </Label>
+    
+    <HBox styleClass = "conteneur, conteneur-parent">
+    
+    	<Pane HBox.hgrow = "ALWAYS" styleClass = "grand-espace-horizontal"/>
+    	
+    	<ScrollPane HBox.hgrow = "ALWAYS" fitToWidth = "true">
+    		<content>
+    			<VBox styleClass="conteneur" fx:id = "conteneurLeaderboard" id = "conteneur-Leaderboard">
+    			</VBox>
+    		</content>
+    	</ScrollPane>
+    	
+    	<Pane HBox.hgrow = "ALWAYS" styleClass = "grand-espace-horizontal"/>
+    	
+    </HBox>
+    
+    <Pane VBox.vgrow = "ALWAYS" styleClass = "grand-espace-vertical"/>
+    
+    <Pane VBox.vgrow = "ALWAYS" styleClass="petit-v"/>
+    
+<HBox id = "conteneur-bouton-retour">
+    <Button 
+    	fx:id="boutonRetourAcceuil"
+        text="%retourAcceuil"
+        styleClass="gros-bouton"
+        id="bouton-retour">
+    </Button>
+</HBox>
+</VBox>

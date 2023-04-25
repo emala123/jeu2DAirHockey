@@ -1,0 +1,171 @@
+.conteneur {
+    -fx-background-color: rgb(135, 206, 235);
+	-fx-border-width:7;
+	-fx-border-color: white;
+}
+
+#vue-leaderboard{
+	-fx-alignment: center;
+}
+
+.gros-bouton{
+	-fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50%, white 100%),
+        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+	-fx-font-weight: bold;
+	}
+	
+.gros-bouton: hover{
+	-fx-cursor: hand;
+}
+
+.gros-bouton:pressed {
+	-fx-font-size: 0.8em;
+}
+
+#conteneur-bouton-retour{
+	-fx-alignment: bottom-left;
+}
+
+.petit-v{
+	-fx-background: pink;
+	-fx-background-color: pink;
+	-fx-min-height: 20px;
+	-fx-max-height: 100px;
+}
+
+#vue-accueil {
+	-fx-background-color: rgb(135, 206, 235);
+	-fx-alignment: center;
+}
+
+.petit-espace-vertical {
+	-fx-min-height:10;
+	-fx-max-height:50;
+	-fx-background-color:pink;
+	-fx-background: pink;
+	-fx-opacity:0.2;
+}
+
+.grand-espace-vertical {
+	-fx-min-height:50;
+	-fx-max-height:200;
+	-fx-background-color:pink;
+	-fx-opacity:0.2;
+}
+
+.petit-espace-horizontal {
+	-fx-min-width:10;
+	-fx-max-width:50;
+	-fx-background-color:pink;
+	-fx-opacity:0.2;
+}
+
+.grand-espace-horizontal {
+	-fx-min-width:50;
+	-fx-max-width:200;
+	-fx-background-color:pink;
+	-fx-opacity:0.2;
+}
+
+.conteneur-parent {
+	-fx-border-width:10;
+	-fx-border-color: rgb(255, 204, 153);
+	-fx-alignment: center;
+}
+
+#conteneur-Leaderboard{
+	-fx-min-height:100;
+	-fx-min-width:100;
+	-fx-alignment:top-center;
+	-fx-border-color: transparent;
+}
+
+.logo {
+	-fx-min-width:115px;
+    -fx-min-height:115px;
+    -fx-max-width:1000px;
+    -fx-max-height:300px;
+}
+
+.bouton-rouge {
+    -fx-background-color: 
+     linear-gradient(from 90% 100% to 0% 100%, #b72353 0%, #9f2836 100%),
+     #a83145,
+     #ea5c63,
+     radial-gradient(center 50% 50%, radius 100%, #ea5c62, #d33a54);
+}
+
+.leaderboard {
+   -fx-padding: 8 15 15 15;
+   -fx-background-color: derive(black, 75%);
+   -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+   -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+   -fx-background-radius: 8;
+}
+
+.label-descrip-joueur{
+   -fx-text-fill: derive(black, 0%);
+   -fx-font-size:3em;
+}
+
+.scroll-bar {
+   -fx-background-color: transparent;
+   -fx-border-color: transparent;
+}
+
+.scroll-bar .track {
+   -fx-background-color: derive(grey, 80%);
+   -fx-border-color: transparent;
+   -fx-background-radius: 8;
+}
+
+.scroll-bar .thumb {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+        linear-gradient(from 0% 93% to 0% 100%, #BF0000 50%, white 100%),
+        radial-gradient(center 50% 50%, radius 100%, white, red);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button,
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow,
+.scroll-bar .corner {
+    -fx-shape : " ";    
+    -fx-background-color: transparent;
+    -fx-visibility: hidden;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color:transparent;
+    -fx-background:transparent;
+}
+
+.scroll-pane {
+    -fx-background-color:transparent;
+    -fx-background:transparent;
+    -fx-hbar-policy:never;
+}
+
+#vue-partie{
+	-fx-background-color: rgb(135, 206, 235);
+	-fx-alignment: center;
+}
+
+.petit-v-score{
+	-fx-border-width:2;
+	-fx-border-color: white;
+	-fx-background: pink;
+	-fx-background-color: pink;
+	-fx-min-height: 20px;
+	-fx-max-height: 100px;
+}

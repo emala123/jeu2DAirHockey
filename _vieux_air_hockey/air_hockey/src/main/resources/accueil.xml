@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+    fx:controller="air_hockey.frontal.vues.VueAccueil" 
+    styleClass="conteneur"
+    id="vue-accueil">
+
+    <Button 
+    	fx:id="boutonLeaderboard"
+        text="%AllerAuLeaderboard"
+        styleClass="gros-bouton"
+        id="boutonAllerLeaderboard">
+    </Button>
+    
+    <Button
+    	fx:id="boutonJoindrePartie"
+    	text="%joindrePartie"
+    	styleClass="gros-bouton"
+    	id="bouton-ouvrir-partie">
+    </Button>
+    
+</VBox>

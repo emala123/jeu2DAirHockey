@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.*?>
+<?import air_hockey.frontal.controles.FlexBoxLeaderboard?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+    fx:controller="air_hockey.frontal.fragment.FragmentPosition"
+    styleClass="conteneur,vue-leaderboard">
+    
+    <Pane styleClass = "petit-espace-vertical"/>
+    
+    <HBox>
+    	<Pane styleClass="grand-espace-horizontal"/>
+    	<FlexBoxLeaderboard HBox.hgrow = "ALWAYS" styleClass="conteneur,leaderboard" fx:id="horizontalOuVertical">
+    		<Button
+    			fx:id="boutonRetirerPositionJoueur"
+    			text="%retirerPositionJoueur"
+    			styleClass="gros-bouton, bouton-rouge">
+    		</Button>
+    		<Pane minHeight="20" minWidth="20"/>
+    		<Label
+    			fx:id="labelDescriptionJoueur"
+    			styleClass="label-descrip-joueur">
+    		</Label>
+    	</FlexBoxLeaderboard>
+    	<Pane styleClass="grand-espace-horizontal"/>
+    </HBox>
+    <Pane styleClass = "petit-espace-vertical"/>
+</VBox>

@@ -1,0 +1,121 @@
+plugins {
+    id 'localJavaPlugin'
+    id 'localFxPlugin'
+}
+
+dependencies {
+    ntroDependencies.split(',').each {
+        implementation "ca.ntro:ntro_${it}:${version}"
+    }
+}
+
+eclipse {
+    classpath {
+        file {
+            whenMerged {
+                classpath ->
+
+                    def toRemove = []
+                    def toAdd = []
+
+                    entries.each {
+
+                        if(ntroDependencies.split(',').any{dependency -> it.path.equals("/ntro_"+dependency)}){
+                            toRemove += it
+                            toAdd += new org.gradle.plugins.ide.eclipse.model.Library(fileReference(file(it.publication.path)))
+                        }
+                    }
+
+                    entries.removeAll toRemove
+                    entries.addAll toAdd
+            }
+        }
+    }
+}
+
+def commonConfig = {
+   classpath = sourceSets.main.runtimeClasspath
+   standardInput = System.in
+   jvmArgs('-Dfile.encoding=UTF-8')
+}
+
+// ajouter
+def clientConfig = {
+   configure commonConfig
+   mainClass = "air_hockey.ClientAirHockey"
+   jvmArgs('-Dsun.java2d.opengl=true')
+}
+
+// ajouter
+def serverConfig = {
+   configure commonConfig
+   mainClass = "air_hockey.ServeurAirHockey"
+}
+
+def localConfig = {
+   configure commonConfig
+   main = "air_hockey.AirHockeyLocal"
+   jvmArgs('-Dsun.java2d.opengl=true')
+}
+
+// ajouter
+task(client, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+}
+
+// ajouter
+task(serveur, dependsOn: 'classes', type: JavaExec) {
+   configure serverConfig
+}
+
+task(alice, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+   args("aaaa", "Alice","Yi")
+}
+
+task(bob, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+   args("bbbb", "Bob","Castillo")
+}
+
+task(charlie, dependsOn: 'classes', type: JavaExec) {
+   configure clientConfig
+   args("cccc", "Charlie","Ahmadi")
+}
+
+task(aliceLocal, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+   args("aaaa", "Alice","Yi")
+}
+
+task(bobLocal, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+   args("bbbb", "Bob","Castillo")
+}
+
+task(charlieLocal, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+   args("cccc", "Charlie","Ahmadi")
+}
+
+task(local, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+}
+
+task(localFr, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+   jvmArgs('-Duser.language=fr')
+}
+
+task(localEn, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+   jvmArgs('-Duser.language=en')
+}
+task(localEs, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+   jvmArgs('-Duser.language=es')
+}
+task(localDe, dependsOn: 'classes', type: JavaExec) {
+   configure localConfig
+   jvmArgs('-Duser.language=de')
+}
