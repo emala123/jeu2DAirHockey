@@ -17,6 +17,8 @@ public class MondeAirHockey2d  extends World2dFx{
 	private Pusher2d pusherGauche;
 	private Pusher2d pusherDroite;
 	private Puck2d puck;
+	private But2d butGauche;
+	private But2d butDroite;
 	
 	@Override
 	protected void initialize() {
@@ -25,12 +27,15 @@ public class MondeAirHockey2d  extends World2dFx{
 		
 		pusherGauche = new Pusher2d(25);
 		pusherDroite = new Pusher2d(LARGEUR_MONDE - 60);
-		puck = new Puck2d(pusherGauche, pusherDroite);
+		puck = new Puck2d(pusherGauche, pusherDroite, butGauche, butDroite);
+		butGauche = new But2d();
+		butDroite = new But2d();
 		
 		addObject2d(pusherGauche);
 		addObject2d(pusherDroite);
 		addObject2d(puck);
-		
+		addObject2d(butGauche);
+		addObject2d(butDroite);
 	}
 	
 	@Override
@@ -48,6 +53,8 @@ public class MondeAirHockey2d  extends World2dFx{
 		gc.setLineWidth(15);
 		
 		gc.strokeRect(0, 0, getWidth(), getHeight());
+		
+		
 		
 		gc.restore();
 	}

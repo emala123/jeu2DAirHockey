@@ -15,6 +15,8 @@ public class Puck2d extends ObjetAirHockey2d {
 	
 	private Pusher2d pusherGauche;
 	private Pusher2d pusherDroite;
+	private But2d butGauche;
+	private But2d butDroite;
 
 	public Pusher2d getPusherDroite() {
 		return pusherDroite;
@@ -36,11 +38,13 @@ public class Puck2d extends ObjetAirHockey2d {
 		super();
 	}
 	
-	public Puck2d(Pusher2d pusherGauche, Pusher2d pusherDroite) {
+	public Puck2d(Pusher2d pusherGauche, Pusher2d pusherDroite, But2d butGauche, But2d butDroite) {
 		super();
 		
 		setPusherGauche(pusherGauche);
 		setPusherDroite(pusherDroite);
+		setButGauche(butGauche);
+		setButDroite(butDroite);
 	}
 
 	@Override
@@ -208,5 +212,21 @@ public class Puck2d extends ObjetAirHockey2d {
         msgAjouterPoint.setCadran(cadran.name());
         msgAjouterPoint.send();
 		
+	}
+
+	public But2d getButGauche() {
+		return butGauche;
+	}
+
+	public void setButGauche(But2d butGauche) {
+		this.butGauche = butGauche;
+	}
+
+	public But2d getButDroite() {
+		return butDroite;
+	}
+
+	public void setButDroite(But2d butDroite) {
+		this.butDroite = butDroite;
 	}
 }
