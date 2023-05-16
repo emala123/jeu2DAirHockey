@@ -4,6 +4,7 @@ import ca.ntro.app.NtroApp;
 import ca.ntro.app.fx.controls.ResizableWorld2dCanvasFx;
 import ca.ntro.app.fx.controls.World2dMouseEventFx;
 import ca.ntro.core.initialization.Ntro;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.ArcType;
 import pong.commun.enums.Cadran;
 import pong.commun.messages.MsgAjouterPoint;
@@ -54,12 +55,12 @@ public class Balle2d extends ObjetPong2d {
 	}
 
 	@Override
-	public void drawOn(ResizableWorld2dCanvasFx canvas) {
+	public void drawOnWorld(GraphicsContext gc) {
 
-		canvas.drawOnWorld(gc -> {
+		//canvas.drawOnWorld(gc -> {
 
 			gc.fillArc(getTopLeftX(), getTopLeftY(), getWidth(), getHeight(), 0, 360, ArcType.CHORD);
-		});
+	//	});
 	}
 
 	@Override

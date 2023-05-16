@@ -45,9 +45,9 @@ public class Palette2d extends ObjetPong2d {
 	}
 
 	@Override
-	public void drawOn(ResizableWorld2dCanvasFx canvas) {
+	public void drawOnWorld(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		canvas.drawOnWorld(gc -> {
+	//	canvas.drawOnWorld(gc -> {
 			gc.save();
 
 			gc.setFill(Color.BLACK);
@@ -57,7 +57,7 @@ public class Palette2d extends ObjetPong2d {
 
 			gc.restore();
 
-		});
+	//	});
 	}
 
 	@Override

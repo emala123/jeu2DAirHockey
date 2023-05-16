@@ -6,6 +6,7 @@ import air_hockey.commun.messages.MsgRetirerJoueur;
 import air_hockey.commun.modeles.ModeleLeaderboard;
 import air_hockey.commun.modeles.ModelePartie;
 import air_hockey.commun.modeles.ModeleJoueur;
+import air_hockey.commun.monde2d.But2d;
 import air_hockey.commun.monde2d.MondeAirHockey2d;
 import air_hockey.commun.monde2d.Puck2d;
 import air_hockey.commun.monde2d.Pusher2d;
@@ -32,6 +33,7 @@ public class Declarations {
 		registrar.registerValue(Puck2d.class);
 		registrar.registerValue(Pusher2d.class);
 		registrar.registerModel(ModelePartie.class);
+		registrar.registerValue(But2d.class);
 	}
 
 	public static void declarerServeur(ServerRegistrar registrar) {

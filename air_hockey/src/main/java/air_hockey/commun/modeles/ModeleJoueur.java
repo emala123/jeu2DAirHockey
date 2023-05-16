@@ -6,6 +6,7 @@ import air_hockey.frontal.donnees.DonneesVuePartie;
 import air_hockey.frontal.vues.VuePartie;
 import ca.ntro.app.models.Model;
 
+
 public class ModeleJoueur implements Model{
 
 	private MondeAirHockey2d mondeAirHockey2d = new MondeAirHockey2d();
